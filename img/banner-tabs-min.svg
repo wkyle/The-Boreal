@@ -1,0 +1,33 @@
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<?xml-stylesheet type="text/css" href="../css/app.css"?>
+<svg id="svg-menu-buttons" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 468 28" height="100%" width="100%" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/">
+	<defs>
+		<linearGradient id="linearGradient" x1="430" gradientUnits="userSpaceOnUse" y1="372.9" gradientTransform="matrix(0,-1,1,0,-197.85802,454.99365)" x2="455" y2="372.9">
+			<stop id="stop4034" stop-color="#910000" offset="0"/>
+			<stop id="stop4040" stop-color="#b92809" offset="0.3"/>
+			<stop id="stop4036" stop-color="#b92809" offset="1"/>
+		</linearGradient>
+		<linearGradient id="linearGradient3924" y2="56.53" xlink:href="#linearGradient" gradientUnits="userSpaceOnUse" x2="70.5" gradientTransform="matrix(0,-1,1,0,1.2050629,70.5)" y1="56.53" x1="44.5"/>
+		<linearGradient id="linearGradient3940" y2="56.53" xlink:href="#linearGradient" gradientUnits="userSpaceOnUse" x2="188" gradientTransform="matrix(0,-1,1,0,119.20506,188.5)" y1="56.53" x1="163"/>
+		<linearGradient id="linearGradient3948" y2="56.53" xlink:href="#linearGradient" gradientUnits="userSpaceOnUse" x2="305.5" gradientTransform="matrix(0,-1,1,0,236.70506,306)" y1="56.53" x1="280.5"/>
+		<linearGradient id="linearGradient3964" y2="56.53" xlink:href="#linearGradient" gradientUnits="userSpaceOnUse" x2="423.5" gradientTransform="matrix(0,-1,1,0,354.20506,423.5)" y1="56.53" x1="397.5"/>
+		<filter id="dark-blur" color-interpolation-filters="sRGB">
+			<feFlood id="feFlood3987" result="flood" flood-color="rgb(0,0,0)" flood-opacity="0.9"/>
+			<feComposite id="feComposite3989" operator="in" result="composite1" in2="SourceGraphic" in="flood"/>
+			<feGaussianBlur id="feGaussianBlur3991" stdDeviation="0.8" result="blur"/>
+			<feOffset id="feOffset3993" result="offset" dx="-7.07767e-15" dy="1"/>
+			<feComposite id="feComposite3995" operator="over" result="composite2" in2="offset" in="SourceGraphic"/>
+		</filter>
+
+	</defs>
+
+	<path id="button-0" filter="url(#dark-blur)" fill="url(#linearGradient3924)" d="m0.2351,0.5,115,0,0,25-100,0z"/>
+	<path id="button-1" filter="url(#dark-blur)" fill="url(#linearGradient3940)" d="m118.2,0.5,0,25,115,0,0-25z"/>
+	<path id="button-2" filter="url(#dark-blur)" fill="url(#linearGradient3948)" d="m236.2,25.5,0-25,114,0,0,25z"/>
+	<path id="button-3" filter="url(#dark-blur)" fill="url(#linearGradient3964)" d="m353.2,25.5,0-25,115,0,0,25z"/>
+	
+	<text id="text3017" stroke-width="0.5" style="letter-spacing:0px;word-spacing:0px;" line-height="125%" font-family="Sans" clip-path="none" xml:space="preserve" stroke-dasharray="none" font-size="12px" font-style="normal" stroke="#282828" stroke-miterlimit="4" y="16.539536" x="37.184185" font-weight="normal" fill="#ffffff"><tspan id="tspan3019" style="letter-spacing:2px;" stroke-width="0.5" font-family="Ubuntu" stroke-dasharray="none" font-size="16px" font-style="normal" stroke="#282828" font-stretch="normal" stroke-miterlimit="4" font-variant="normal" y="17.539551" x="37.184185" font-weight="normal" fill="#ffffff">House</tspan></text>
+	<text id="text3017-1" stroke-width="0.5" style="letter-spacing:0px;word-spacing:0px;" line-height="125%" font-family="Sans" clip-path="none" xml:space="preserve" stroke-dasharray="none" font-size="12px" font-style="normal" stroke="#282828" stroke-miterlimit="4" y="16.539534" x="354.23505" font-weight="normal" fill="#000000"><tspan id="tspan3019-7" style="letter-spacing:2px;" stroke-width="0.5" font-family="Ubuntu" stroke-dasharray="none" font-size="16px" font-style="normal" stroke="#282828" font-stretch="normal" stroke-miterlimit="4" font-variant="normal" y="17.539549" x="361.23505" font-weight="normal" fill="#ffffff">Legislation</tspan></text>
+	<text id="text3017-7" stroke-width="0.5" style="letter-spacing:0px;word-spacing:0px;" line-height="125%" font-family="Sans" clip-path="none" xml:space="preserve" stroke-dasharray="none" font-size="12px" font-style="normal" stroke="#282828" stroke-miterlimit="4" y="16.539534" x="255.23508" font-weight="normal" fill="#000000"><tspan id="tspan3019-9" style="letter-spacing:2px;" stroke-width="0.5" font-family="Ubuntu" stroke-dasharray="none" font-size="16px" font-style="normal" stroke="#282828" font-stretch="normal" stroke-miterlimit="4" font-variant="normal" y="17.539549" x="260.23505" font-weight="normal" fill="#ffffff">Finance</tspan></text>
+	<text id="text3017-76" stroke-width="0.5" style="letter-spacing:0px;word-spacing:0px;" line-height="125%" font-family="Sans" clip-path="none" xml:space="preserve" stroke-dasharray="none" font-size="12px" font-style="normal" stroke="#282828" stroke-miterlimit="4" y="16.539534" x="130.23508" font-weight="normal" fill="#000000"><tspan id="tspan3019-2" style="letter-spacing:2px;" stroke-width="0.5" font-family="Ubuntu" stroke-dasharray="none" font-size="16px" font-style="normal" stroke="#282828" font-stretch="normal" stroke-miterlimit="4" font-variant="normal" y="17.539549" x="135.23508" font-weight="normal" fill="#ffffff">Elections</tspan></text>
+</svg>

@@ -1,0 +1,112 @@
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 265.9 48.51" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/">
+	<defs id="defs4">
+		<filter id="filter4250" color-interpolation-filters="sRGB">
+			<feFlood id="feFlood4252" result="flood" flood-color="rgb(0,0,0)" flood-opacity="0.9"/>
+			<feComposite id="feComposite4254" operator="in" result="composite1" in2="SourceGraphic" in="flood"/>
+			<feGaussianBlur id="feGaussianBlur4256" stdDeviation="1" result="blur"/>
+			<feOffset id="feOffset4258" result="offset" dx="-7.07767e-15" dy="1"/>
+			<feComposite id="feComposite4260" operator="over" result="composite2" in2="offset" in="SourceGraphic"/>
+		</filter>
+		<filter id="filter4272" color-interpolation-filters="sRGB">
+			<feFlood id="feFlood4274" result="flood" flood-color="rgb(0,0,0)" flood-opacity="0.9"/>
+			<feComposite id="feComposite4276" operator="in" result="composite1" in2="SourceGraphic" in="flood"/>
+			<feGaussianBlur id="feGaussianBlur4278" stdDeviation="1" result="blur"/>
+			<feOffset id="feOffset4280" result="offset" dx="-7.07767e-15" dy="1"/>
+			<feComposite id="feComposite4282" operator="over" result="composite2" in2="offset" in="SourceGraphic"/>
+		</filter>
+		<filter id="filter4302" color-interpolation-filters="sRGB">
+			<feFlood id="feFlood4304" result="flood" flood-color="rgb(0,0,0)" flood-opacity="0.9"/>
+			<feComposite id="feComposite4306" operator="in" result="composite1" in2="SourceGraphic" in="flood"/>
+			<feGaussianBlur id="feGaussianBlur4308" stdDeviation="1" result="blur"/>
+			<feOffset id="feOffset4310" result="offset" dx="-7.07767e-15" dy="1"/>
+			<feComposite id="feComposite4312" operator="over" result="composite2" in2="offset" in="SourceGraphic"/>
+		</filter>
+		<filter id="filter4328" color-interpolation-filters="sRGB">
+			<feFlood id="feFlood4330" result="flood" flood-color="rgb(0,0,0)" flood-opacity="0.9"/>
+			<feComposite id="feComposite4332" operator="in" result="composite1" in2="SourceGraphic" in="flood"/>
+			<feGaussianBlur id="feGaussianBlur4334" stdDeviation="1" result="blur"/>
+			<feOffset id="feOffset4336" result="offset" dx="-7.07767e-15" dy="1"/>
+			<feComposite id="feComposite4338" operator="over" result="composite2" in2="offset" in="SourceGraphic"/>
+		</filter>
+		<clipPath id="clipPath4506" clipPathUnits="userSpaceOnUse">
+			<rect id="rect4508" height="122.2" width="76.27" y="335.3" x="209.5" fill="#FFF"/>
+		</clipPath>
+		<clipPath id="clipPath4530" clipPathUnits="userSpaceOnUse">
+			<rect id="rect4532" height="92.43" width="63.13" y="353.5" x="286.3" fill="#FFF"/>
+		</clipPath>
+		<clipPath id="clipPath4552" clipPathUnits="userSpaceOnUse">
+			<rect id="rect4554" height="92.43" width="62.12" y="350.2" x="350.2" fill="#FFF"/>
+		</clipPath>
+		<clipPath id="clipPath4556" clipPathUnits="userSpaceOnUse">
+			<rect id="rect4558" height="92.43" width="62.63" y="364.3" x="412.8" fill="#FFF"/>
+		</clipPath>
+		<linearGradient id="linearGradient4560" y2="525.7" gradientUnits="userSpaceOnUse" x2="67.8" gradientTransform="matrix(0,-1,1,0,-278.09823,447.01317)" y1="525.7" x1="27.37">
+			<stop id="stop4230" stop-color="#910000" offset="0"/>
+			<stop id="stop4236" stop-color="#910000" offset="0.25"/>
+			<stop id="stop4232" stop-color="#b92809" offset="1"/>
+		</linearGradient>
+		<linearGradient id="linearGradient4562" y2="525.7" gradientUnits="userSpaceOnUse" x2="264.4" gradientTransform="matrix(0,-1,1,0,-81.530796,643.5806)" y1="525.7" x1="223.9">
+			<stop id="stop4320" stop-color="#910000" offset="0"/>
+			<stop id="stop4326" stop-color="#910000" offset="0.25"/>
+			<stop id="stop4322" stop-color="#b92809" offset="1"/>
+		</linearGradient>
+		<linearGradient id="linearGradient4564" y2="525.7" gradientUnits="userSpaceOnUse" x2="138" gradientTransform="matrix(0,-1,1,0,-207.85494,517.25646)" y1="525.7" x1="97.62">
+			<stop id="stop4264" stop-color="#910000" offset="0"/>
+			<stop id="stop4270" stop-color="#910000" offset="0.25"/>
+			<stop id="stop4266" stop-color="#b92809" offset="1"/>
+		</linearGradient>
+		<linearGradient id="linearGradient4566" y2="525.7" gradientUnits="userSpaceOnUse" x2="201.1" gradientTransform="matrix(0,-1,1,0,-144.77619,580.33521)" y1="525.7" x1="160.7">
+			<stop id="stop4294" stop-color="#910000" offset="0"/>
+			<stop id="stop4300" stop-color="#910000" offset="0.25"/>
+			<stop id="stop4296" stop-color="#b92809" offset="1"/>
+		</linearGradient>
+	</defs>
+	<metadata id="metadata7">
+		<rdf:RDF>
+			<cc:Work rdf:about="">
+				<dc:format>image/svg+xml</dc:format>
+				<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+				<dc:title/>
+			</cc:Work>
+		</rdf:RDF>
+	</metadata>
+	<g id="layer1" transform="translate(-209.50308,-375.16965)">
+		<g id="button0" clip-path="url(#clipPath4506)">
+			<path id="button-0-box" d="m285.2,379.2-75.28,0,25.95,40.43,49.29,0z" filter="url(#filter4250)" fill="url(#linearGradient4560)"/>
+			<g id="g3909" fill="#282828" transform="matrix(0.24470692,0,0,0.22458075,219.95769,311.41656)" stroke="#FFF">
+				<path id="path3889" stroke-linejoin="round" d="m145.7,321.6-60,60,20,0,0,75,25,0,0-50,35,0,0,50,25,0,0-75,20,0-60-60z" stroke="#FFF" stroke-linecap="butt" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="8" fill="#282828"/>
+			</g>
+		</g>
+		<g id="button3" clip-path="url(#clipPath4556)">
+			<path id="button-3-box" filter="url(#filter4328)" fill="url(#linearGradient4562)" d="m474.9,379.2-61.39,0,0.0275,40.43,61.33,0z"/>
+			<g id="g3899" stroke-linejoin="round" transform="matrix(0.19592905,0,0,0.19592905,389.00337,323.8515)" stroke="#FFF" stroke-linecap="round" stroke-dasharray="none" stroke-miterlimit="4" stroke-width="8" fill="#282828">
+				<path id="path2987" d="m230,442.4,0-120,90,0,20,20,0,100z"/>
+				<path id="path2989" d="m320,322.4,0,20,20,0z"/>
+				<path id="path2991" d="m245,342.4,60,0"/>
+				<path id="path2993" d="m245,371.4,80,0"/>
+				<path id="path2995" d="m245,386.4,80,0"/>
+				<path id="path2997" d="m245,401.4,80,0"/>
+				<path id="path2999" d="m245,416.4,80,0"/>
+				<path id="path3001" d="m230,337.4-15,0,0,120,110,0,0-15-95,0z"/>
+			</g>
+		</g>
+		<g id="button1" clip-path="url(#clipPath4530)">
+			<path id="button-1-box" filter="url(#filter4272)" fill="url(#linearGradient4564)" d="m348.5,379.2-61.39,0,0.0275,40.43,61.33,0z"/>
+			<g id="g4287" stroke="#FFF" transform="translate(200.0102,-126.26907)">
+				<rect id="rect3946" stroke-linejoin="round" stroke-dasharray="none" rx="1.232" ry="1.232" height="25.88" width="25.88" stroke-linecap="round" stroke-miterlimit="4" y="514.8" x="106.9" stroke-width="1.952" fill="none"/>
+				<g id="layer1-9" transform="matrix(1.4785514,0,0,1.4785514,-175.72692,-251.75012)" fill="#282828">
+					<path id="path2223" fill="#282828" stroke="#FFF" d="m197.7,534.3c-0.275-0.004-1.462-1.778-2.637-3.944l-2.137-3.938,0.554-0.554c0.3047-0.3047,1.124-0.554,1.82-0.554h1.266l0.6364,2.005,0.6364,2.005,5.064-5.541c2.785-3.048,6.003-6.044,7.15-6.658l2.086-1.116-4.209,4.782c-2.315,2.63-5.451,6.748-6.969,9.151s-2.985,4.366-3.26,4.362z"/>
+				</g>
+			</g>
+		</g>
+		<g id="button2" clip-path="url(#clipPath4552)">
+			<path id="button-2-box" filter="url(#filter4302)" fill="url(#linearGradient4566)" d="m350.2,419.6,61.39,0-0.0275-40.43-61.33,0z"/>
+			<g id="g4340" stroke-dasharray="none" stroke-miterlimit="4">
+				<text id="text3912" style="letter-spacing:0px;word-spacing:0px;" font-family="Sans" font-weight="normal" xml:space="preserve" transform="scale(1.2784749,0.78218194)" stroke="#ffffff" font-size="5.06787872px" font-style="normal" y="524.72058" x="287.92206" stroke-width="1" line-height="125%" fill="#282828"><tspan id="tspan3914" font-family="Latin Modern Sans Demi Cond" font-weight="600" stroke-dasharray="none" font-size="42.23231888px" font-style="normal" stroke="#ffffff" font-stretch="normal" stroke-miterlimit="4" font-variant="normal" y="524.72058" x="287.92206" stroke-width="1" fill="#282828">S</tspan></text>
+				<path id="path3916" stroke-linejoin="round" d="m382.2,383.9,0,2.64" stroke="#FFF" stroke-linecap="round" stroke-width="1.81981945" fill="none"/>
+				<path id="path3916-5" stroke-linejoin="round" d="m382.3,411.5,0,2.531" stroke="#FFF" stroke-linecap="round" stroke-width="1.78159845" fill="#282828"/>
+			</g>
+		</g>
+	</g>
+</svg>
