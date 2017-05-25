@@ -58,7 +58,7 @@ function initMapBoxMap() {
         accessToken: mapBoxAccessToken
     }).addTo(mymap);
 
-    L.geoJson(provincesGeo).addTo(mymap);
+    L.geoJson(provincesGeo, {style: style}).addTo(mymap);
 }
 
 
@@ -89,3 +89,29 @@ function displayXML(xmlDoc) {
 	document.getElementById("xmlstring").innerHTML = doc.responseText;
 }
 
+
+
+
+function getColor(d) {
+    return d > 120000 ? '#244A57' :
+           d > 110000  ? '#114F54' :
+           d > 100000  ? '#497878' :
+           d > 80000  ? '#00727F' :
+           d > 60000   ? '#279788' :
+           d > 50000   ? '#5BB4B0' :
+           d > 40000   ? '#7CDAD3' :
+                      '#AFE0E0';
+}
+
+
+
+function style(feature) {
+    return {
+        fillColor: getColor(feature.properties.DECPOPCNT),
+        weight: 2,
+        opacity: 1,
+        color: 'white',
+        dashArray: '3',
+        fillOpacity: 0.5
+    };
+}
