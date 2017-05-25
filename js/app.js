@@ -93,13 +93,13 @@ function displayXML(xmlDoc) {
 
 
 function getColor(d) {
-    return d > 120000 ? '#244A57' :
-           d > 110000  ? '#114F54' :
-           d > 100000  ? '#497878' :
-           d > 80000  ? '#00727F' :
-           d > 60000   ? '#279788' :
-           d > 50000   ? '#5BB4B0' :
-           d > 40000   ? '#7CDAD3' :
+    return d > 120000000 ? '#244A57' :
+           d > 110000000  ? '#114F54' :
+           d > 100000000  ? '#497878' :
+           d > 80000000  ? '#00727F' :
+           d > 60000000   ? '#279788' :
+           d > 5000000   ? '#5BB4B0' :
+           d > 400000   ? '#7CDAD3' :
                       '#AFE0E0';
 }
 
@@ -107,7 +107,7 @@ function getColor(d) {
 
 function style(feature) {
     return {
-        fillColor: getColor(feature.properties.DECPOPCNT),
+        fillColor: "#AFE0E0",//getColor(feature.properties.DECPOPCNT),
         weight: 2,
         opacity: 1,
         color: 'white',
