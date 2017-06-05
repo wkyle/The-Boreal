@@ -66,7 +66,7 @@ $( ".postal-search-bar button" ).click(function() {
     var address = $("#address-input").val();
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == 'OK') {
-        alert(results[0].geometry.location);
+        coord2FED([results[0].geometry.location.lng(), results[0].geometry.location.lat()], provincesGeo);
         //Convert coords to FED ID and load appropriate page. 
         //Store FED ID in session storage for the next page to load XML and fill in data
       } else {
@@ -152,30 +152,14 @@ function style(feature) {
 }
 
 
-// coord2FED([49.0, -123.0], provincesGeo)
-
-
-d3.json('../data/shitty-test.geojson', function(error, mapData) {
-    alert(mapData.features.length);
-    // var features = mapData.features;
-    // features.forEach(function(feature) {
-    //     alert(feature.properties.FEDNUM);
-    //     feature.close = +feature.close;
-    // });
-});
-
 function coord2FED (point, geojson) {
     var fedID;
-    // for (var i = geojson.length - 1; i >= 0; i--) {
-    //     if (d3.geoContains(geojson[i], point)) {
-    //         fedID = geojson[i].attribute.fedid
-    //     };
-    // };
-
-    geojson.features.forEach(function(feature) {
-        alert(feature.properties.FEDNUM);
-        feature.close = +feature.close;
+    var features = geojson.features
+    features.forEach(function (f) {
+        if(d3.geoContains(f, point)) {
+            fedID = f.properties.FEDUID
+            alert(f.properties.FEDENAME)
+        }
     });
-
     return fedID
 }
