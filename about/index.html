@@ -5,11 +5,11 @@
     	<meta http-equiv="x-ua-compatible" content="ie=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     	<title>The Boreal: Canadian Data for Canadians</title>
-    	<link rel="stylesheet" href="css/foundation.css">
-    	<link rel="stylesheet" href="css/app.css">
+    	<link rel="stylesheet" href="../css/foundation.css">
+    	<link rel="stylesheet" href="../css/app.css">
     	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css">
   	</head>
-  	<body>
+  	<body onload=initialize()>
 
 
       	<!-- NAVIGATION -->
@@ -30,12 +30,19 @@
         <nav id="top-bar" class="top-bar nav-desktop hide-for-small-only">
           <div class="wrap">
             <div class="top-bar-left">
-              <img id="logo-tag" src="./img/black-paper.png"></img>
+              <div id="top-tag">
+                <div id="top-tag-inner">
+                  <h3>Next</h3>
+                  <h3>Election</h3>
+                  <h1>345</h1>
+                  <h3>Days</h3>
+                </div>
+              </div>
             </div>
 
       		  <div class="top-bar-right">
               <ul id="top-menu" class="menu">
-                <li><a class="menuitem" href="./about/index.html">About</a></li>
+                <li><a class="menuitem" href="./index.html">About</a></li>
                 <li><a class="menuitem" href="#">Contribute</a></li>
                 <li><a class="menuitem" href="#">Data</a></li>
                 <li><a class="menuitem" href="#">Contact</a></li>
@@ -59,9 +66,10 @@
             <div id="hero-box" class="hero-search cf">
               <h1 id="hero-big">The Boreal</h1>
               <h3 id="hero-small">Explore your country and find the information you need to be informed</h3>
+              <h4 id="hero-tiny">Find your federal riding by typing in your address below</h4>
               <form class="postal-search-bar">
-                <input class="form-input" type="text" placeholder="Type your address..." required>
-                <button type="submit">Go</button>
+                <input class="form-input" id="address-input" type="text" placeholder="24 Sussex Drive, Ottawa..." required>
+                <button type="button">Go</button>
               </form>
             </div>
           </div>  
@@ -75,12 +83,7 @@
 
       	<section id="main" class="main">
         	<div class="wrap">
-              <!-- 	<div class="map-container">
-                    <object type="image/svg+xml" data="./img/canada_blank_map.svg" id="province-map">
-                      <p>Unable to display map.</p>
-                      <p>Please update your browser and try again.</p>
-                    </object>
-                </div> -->
+            <h2>This is where all the documentation and details go. Mission statement, driving principals, contact, etc.</h2>
         	</div>
       	</section>
 
@@ -108,7 +111,7 @@
               	<div class="column">
 	                <h4>Site Map</h4>
 	                <hr>
-	                <a href="#">About</a>
+	                <a href="./index.html">About</a>
 	                <a href="#">Contribute</a>
 	                <a href="#">Data</a>
 	                <a href="#">Contact Us</a>
@@ -126,15 +129,15 @@
 
 
 
-        <!-- <script src="http://leafletjs.com/examples/choropleth/us-states.js"></script> -->
-        <!-- <script src="data/geocan.js"></script> -->
-      <script src="data/shapefiles/CA-multiPart-simplified/CA-FED-map.js"></script>
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTX-BLGDx5poEQG1-ar38rQcFSSE5sOa4&libraries=places"></script>
+      <script src="../data/shapefiles/CA-multiPart-simplified/CA-FED-map.js"></script>
 		  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-    	<script src="js/vendor/jquery.js"></script>
-    	<script src="js/vendor/what-input.js"></script>
-    	<script src="js/vendor/foundation.js"></script>
-      <script src="js/waypoints/lib/noframework.waypoints.min.js"></script>
-    	<script src="js/app.js"></script>
+    	<script src="../js/vendor/jquery.js"></script>
+      <script src="..js/vendor/jquery.color-2.1.2.min.js"></script>
+    	<script src="../js/vendor/what-input.js"></script>
+    	<script src="../js/vendor/foundation.js"></script>
+      <script src="../js/waypoints/lib/noframework.waypoints.min.js"></script>
+    	<script src="../js/app.js"></script>
     
   	</body>
 </html>
