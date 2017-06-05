@@ -26,28 +26,37 @@ var waypoint = new Waypoint({
         backgroundColor: '#282828',
         borderRadius: '0'
         }, "fast");
-        // $("#top-tag-inner").animate({
-        // }, "fast");
         $("#top-tag").css({
-            "box-shadow": "none"
+            "box-shadow": "none",
+            "border": "none",
+            "background-image": "linear-gradient(#282828, #282828, #181818)"
         });
-        $("#top-tag-inner").css({
+        $(".top-tag-text").css({
             "visibility": "hidden"
+        });
+        $("#top-title").css({
+            "display": "inline"
         });
 
     } else {
 
         $("#top-tag").animate({
         height: '200px',
-        backgroundColor: 'white'
+        backgroundColor: '#E0E0E0'
         }, "fast");
-        $("#top-tag").css({"border-radius": "0px 0px 5px 5px", 
-                           "box-shadow": "0px 3px 5px rgba(0,0,0,.7)"})
-        $("#top-tag-inner").css({
+        $("#top-tag").css({"border-radius": "0px 0px 8px 8px", 
+                           "box-shadow": "0px 3px 4px rgba(0,0,0,.7)",
+                           "border": "2px solid #484848",
+                           "border-top": "none",
+                           "background-image": "none"});
+        $(".top-tag-text").css({
             "visibility": "visible"
         });
+        $("#top-title").css({
+            "display": "none"
+        });
     }
-  }, offset: -30
+  }, offset: -80
 })
 
 
@@ -140,4 +149,33 @@ function style(feature) {
         dashArray: '2',
         fillOpacity: 0.5
     };
+}
+
+
+// coord2FED([49.0, -123.0], provincesGeo)
+
+
+d3.json('../data/shitty-test.geojson', function(error, mapData) {
+    alert(mapData.features.length);
+    // var features = mapData.features;
+    // features.forEach(function(feature) {
+    //     alert(feature.properties.FEDNUM);
+    //     feature.close = +feature.close;
+    // });
+});
+
+function coord2FED (point, geojson) {
+    var fedID;
+    // for (var i = geojson.length - 1; i >= 0; i--) {
+    //     if (d3.geoContains(geojson[i], point)) {
+    //         fedID = geojson[i].attribute.fedid
+    //     };
+    // };
+
+    geojson.features.forEach(function(feature) {
+        alert(feature.properties.FEDNUM);
+        feature.close = +feature.close;
+    });
+
+    return fedID
 }

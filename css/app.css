@@ -50,26 +50,72 @@ DESKTOP - NAV
 	background-color: transparent;
 }
 
+
+
 #top-tag {
 	width: 160px;
 	height: 200px;
-	box-shadow: 0px 3px 5px rgba(0,0,0,.7);
-	background-color: rgba(0,0,0,.4);
-	border-radius: 0px 0px 8px 8px;
-	/*box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);*/
-}
-
-#top-tag-inner {
-	width: 148px;
-	height: 194px;
 	margin:	auto;
 	background-color: var(--white-b);
 	border-radius: 0px 0px 8px 8px;
+	box-shadow: 0px 3px 4px rgba(0,0,0,.7);
+	border: 2px solid #484848;
+	border-top: none;
+}
+
+#top-title {
+	display: none;
+	color: var(--white-a);
+	font-size: 30px;
+	font-weight: 500;
+	/*text-shadow: var(--blue-a) 1px 1px 1px;*/
+}
+
+#top-title:hover {
+	color: var(--blue-a);
+	text-shadow: white 0px 0px .03em;
+
+}
+
+#top-tag-next {
+	padding-top: 10px;
+	font-weight: 500;
+	color: var(--dark-a);
+	transform: scale(1, .8);
+}
+
+.top-tag-text {
+	text-align: center;
+	line-height: 1em;
+}
+
+#election-countdown span{
+	color: grey;
+	background-color: white;
+	border-radius: 4px;
+	border: 1px solid rgba(0,0,0,0.1);
+  	box-shadow: 
+    inset 0 2px 3px rgba(255,255,255,0.3),
+    inset 0 -2px 3px rgba(0,0,0,0.3),
+    0 1px 1px rgba(255,255,255,0.9);
+    padding: 0px 5px;
+}
+
+#election-countdown {
+	padding-top: 4px;
+}
+
+#top-tag-days span {
+	font-weight: bold;
+	letter-spacing: 8px;
+	font-size: 20px;
+	color: var(--dark-a);
+	padding-left: 6px;
 }
 
 
 .nav-desktop, .top-bar {
-	background-color: var(--dark-a);
+	background-image: linear-gradient(var(--dark-a), var(--dark-a), var(--dark-b));
 	height: 55px;
 	padding: 0px;
 	line-height: 55px;
@@ -93,7 +139,7 @@ DESKTOP - NAV
 
 .menuitem {
 	color: var(--white-b);
-	background-color: var(--dark-a);
+	background-color: transparent;
 	font-family: 'Ubuntu';
 	font-weight: bold;
 	font-size: 1em;
