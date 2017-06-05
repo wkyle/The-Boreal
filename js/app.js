@@ -2,7 +2,8 @@ $(document).foundation()
 
 var electionsXML; 
 var geocoder;
-
+var nextElectionDate = new Date(2019, 10, 21)
+var todaysDate;
 
 function initialize() {
     loadXML();
@@ -12,6 +13,9 @@ function initialize() {
       componentRestrictions: {country: 'ca'}
     };
     autocomplete = new google.maps.places.Autocomplete(input, options);
+    todaysDate = new Date()
+    var electionCountdownDays = Math.floor((nextElectionDate - todaysDate) / (1000*60*60*24))
+    $("#election-countdown span").html(String(electionCountdownDays))
 }
 
 
