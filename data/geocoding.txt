@@ -1,0 +1,7 @@
+AIzaSyAdal7Xe6715uTY5c-zvom4P-a6LUhWU78
+
+usage:  https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
+
+
+
+google places key:  AIzaSyBTX-BLGDx5poEQG1-ar38rQcFSSE5sOa4 

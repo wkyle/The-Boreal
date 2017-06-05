@@ -1,51 +1,78 @@
 $(document).foundation()
 
 var electionsXML; 
-loadXML();
+var geocoder;
+
+
+function initialize() {
+    loadXML();
+    geocoder = new google.maps.Geocoder();
+    var input = document.getElementById('address-input');
+    var options = {
+      componentRestrictions: {country: 'ca'}
+    };
+    autocomplete = new google.maps.places.Autocomplete(input, options);
+}
+
+
+
+
+var waypoint = new Waypoint({
+  element: document.getElementsByTagName('body')[0],
+  handler: function(direction) {
+    if (direction == "down") {
+        $("#top-tag").animate({
+        height: '55px',
+        backgroundColor: '#282828',
+        borderRadius: '0'
+        }, "fast");
+        // $("#top-tag-inner").animate({
+        // }, "fast");
+        $("#top-tag").css({
+            "box-shadow": "none"
+        });
+        $("#top-tag-inner").css({
+            "visibility": "hidden"
+        });
+
+    } else {
+
+        $("#top-tag").animate({
+        height: '200px',
+        backgroundColor: 'white'
+        }, "fast");
+        $("#top-tag").css({"border-radius": "0px 0px 5px 5px", 
+                           "box-shadow": "0px 3px 5px rgba(0,0,0,.7)"})
+        $("#top-tag-inner").css({
+            "visibility": "visible"
+        });
+    }
+  }, offset: -30
+})
+
+
+$( ".postal-search-bar button" ).click(function() {
+  var string = $(".postal-search-bar input").val()
+  if (Boolean(string)) {
+    var address = $("#address-input").val();
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == 'OK') {
+        alert(results[0].geometry.location);
+        //Convert coords to FED ID and load appropriate page. 
+        //Store FED ID in session storage for the next page to load XML and fill in data
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+
+  } else {alert("hi")};
+});
+
+
+
 
 function provinceClick(evt) {
     if (Boolean(electionsXML)){
-        // var provdict = {AB:"-15", 
-        //                 BC:"-20", 
-        //                 SK:"-10", 
-        //                 MB:"-5", 
-        //                 ON:"-2", 
-        //                 QC:"10", 
-        //                 NS:"12", 
-        //                 PE:"-14", 
-        //                 NB:"-14", 
-        //                 NL:"12", 
-        //                 NU:"-6", 
-        //                 NT:"-14", 
-        //                 YT:"-26"};
-
-        // var name = evt.target.parentElement.id;
-        // var svgmap = document.getElementById("province-map").getSVGDocument();
-        // var prov = svgmap.getElementById(name);
-        // var provbox = prov.getBBox();
-        // var x = provbox.x - .05*provbox.width;
-        // var y = provbox.y - .05*provbox.height;
-        // var dx = provbox.width * 1.1;
-        // var dy = provbox.height * 1.1;
-
-        // //adjust rotation to make province look a little more familiar to the eye in isolation
-        // prov.setAttribute("transform", "rotate("+
-        //     provdict[name]+
-        //     " "+
-        //     [parseInt(provbox.x + provbox.width/2), parseInt(provbox.y + provbox.height/2)].join(' ')+
-        //     ")");
-        
-        // //zoom viewbox on selected province
-        // prov.parentNode.parentNode.setAttribute("viewBox", [x,y,dx,dy].join(' '));
-
-        // //make all other provinces invisible
-        // for (var key in provdict) {
-        //     if (key != name) {
-        //         svgmap.getElementById(key).setAttribute("display", "none")
-        //     }
-        // }
-
-        // $(".map-container").animate({width: "400px"}, "slow");
         initMapBoxMap();
     }
 };

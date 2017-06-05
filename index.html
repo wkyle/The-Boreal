@@ -9,7 +9,7 @@
     	<link rel="stylesheet" href="css/app.css">
     	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css">
   	</head>
-  	<body>
+  	<body onload=initialize()>
 
 
       	<!-- NAVIGATION -->
@@ -23,86 +23,77 @@
             </div>
         </div>
 
-		<!-- DESKTOP NAV -->
 
-        <div class="top-spacer hide-for-small-only">
-        <img id="banner" src="./img/banner-min.svg">
-        <a href="#home">
-        	<img id="logo" src="./img/logo-min.svg">
-	    </a>    
-	        <!-- <div class="wrap"> -->
-		      	<nav class="top-bar nav-desktop hide-for-small-only">
-		        	<object type="image/svg+xml" data="./img/banner-tabs-min.svg" id="banner-tabs"></object>
-		        	<object type="image/svg+xml" data="./img/banner-tabs-small-min.svg" id="small-banner-tabs"></object>
-		      		<div class="top-bar-right">
-		                <ul id="top-menu" class="menu">
-		                  	<li><a class="menuitem" href="#">About</a></li>
-		                  	<li><a class="menuitem" href="#">Contribute</a></li>
-		                  	<li><a class="menuitem" href="#">Data</a></li>
-		                  	<li><a class="menuitem" href="#">Contact</a></li>
-		                </ul>
-		            </div>
-		      	</nav>
-		    <!-- </div> -->
-      	</div>
+
+		    <!-- DESKTOP NAV -->
+
+        <nav id="top-bar" class="top-bar nav-desktop hide-for-small-only">
+          <div class="wrap">
+            <div class="top-bar-left">
+              <div id="top-tag">
+                <div id="top-tag-inner">
+                  <h3>Next</h3>
+                  <h3>Election</h3>
+                  <h1>345</h1>
+                  <h3>Days</h3>
+                </div>
+              </div>
+            </div>
+
+      		  <div class="top-bar-right">
+              <ul id="top-menu" class="menu">
+                <li><a class="menuitem" href="./about">About</a></li>
+                <li><a class="menuitem" href="#">Contribute</a></li>
+                <li><a class="menuitem" href="#">Data</a></li>
+                <li><a class="menuitem" href="#">Contact</a></li>
+              </ul>
+            </div>
+            
+          </div>
+      	</nav>
+
+
+
 
 
       	<!-- HERO SECTION -->
 
-      	<div class="hero"></div>
+
+
+      	<div class="hero">
+          <div class="wrap">
+          <!-- <div id="leaf-image"></div> -->
+            <div id="hero-box" class="hero-search cf">
+              <h1 id="hero-big">The Boreal</h1>
+              <h3 id="hero-small">Explore your country and find the information you need to be informed</h3>
+              <h4 id="hero-tiny">Find your federal riding by typing in your address below</h4>
+              <form class="postal-search-bar">
+                <input class="form-input" id="address-input" type="text" placeholder="24 Sussex Drive, Ottawa..." required>
+                <button type="button">Go</button>
+              </form>
+            </div>
+          </div>  
+        </div>
+
+
 
 
 
       	<!-- MAIN SECTION -->
 
-
-
-      	<section id="main-full" class="main">
+      	<section id="main" class="main">
         	<div class="wrap">
-              	
               	<div class="map-container">
                     <object type="image/svg+xml" data="./img/canada_blank_map.svg" id="province-map">
                       <p>Unable to display map.</p>
                       <p>Please update your browser and try again.</p>
                     </object>
                 </div>
-                <div id="mapboxmap"></div>
         	</div>
       	</section>
 
 
 
-
-		<!-- PROVINCE SELECTION VIEW -->
-
-      	<section id="main-province" class="main">
-      		<div class="row">
-      			<div class="column">
-      				<div class="map-container">
-      					<!-- Place map here in JS on province click -->
-      				</div>
-      			</div>
-      			<div class="column">
-      				<h1 id="province-name">Alberta</h1>
-      			</div>
-      		</div>
-      		<div class="row">
-      			<div class="column">
-      				<h1 id="province-size">200 sq km</h1>
-      			</div>
-      		</div>
-      		<div class="row">
-      			<div class="column">
-      				<h1 id="province-data1">1000</h1>
-      			</div>
-      		</div>
-      		<div class="row">
-      			<div class="column">
-      				<h1 id="province-data2">48</h1>
-      			</div>
-      		</div>
-      		
-      	</section>
 
 
 
@@ -143,13 +134,14 @@
 
 
 
-        <!-- <script src="http://leafletjs.com/examples/choropleth/us-states.js"></script> -->
-        <!-- <script src="data/geocan.js"></script> -->
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTX-BLGDx5poEQG1-ar38rQcFSSE5sOa4&libraries=places"></script>
       <script src="data/shapefiles/CA-multiPart-simplified/CA-FED-map.js"></script>
 		  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     	<script src="js/vendor/jquery.js"></script>
+      <script src="js/vendor/jquery.color-2.1.2.min.js"></script>
     	<script src="js/vendor/what-input.js"></script>
     	<script src="js/vendor/foundation.js"></script>
+      <script src="js/waypoints/lib/noframework.waypoints.min.js"></script>
     	<script src="js/app.js"></script>
     
   	</body>

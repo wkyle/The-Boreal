@@ -22,17 +22,13 @@ GENERAL
 
 .wrap {
 	width: 90%;
-	max-width: 1600px;
+	max-width: 1200px;
 	margin: 0 auto;
 }
 
-.embossed-border {
-	border: 1px solid rgba(0,0,0,0.1);
-  	box-shadow: 
-    inset 0 2px 3px rgba(255,255,255,0.3),
-    inset 0 -2px 3px rgba(0,0,0,0.3),
-    0 1px 1px rgba(255,255,255,0.9);
-    background-color: rgba(.95,.95,.95,0.01);
+h1, h2, h3, h4, h5, h6, a {
+	font-family: 'Ubuntu';
+	word-break: initial;
 }
 
 
@@ -45,115 +41,69 @@ DESKTOP - NAV
 *************************************************************** */
 
 
-.top-spacer {
-	height: 57px;
-	background-color: var(--red-b);
-	position: relative;
-	box-shadow: 0px 2px 3px rgba(0,0,0,.7);
-	z-index: 1
+#top-menu > li:not(:first-child):before {
+    content: " | ";
+    color: rgba(255, 255, 255, 0.8);
 }
 
-#banner {
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	height: 108px;
-	z-index: 1
+.top-bar ul {
+	background-color: transparent;
 }
 
-#banner-tabs {
-	position: absolute;
-	width: 600px;
-	top: 56px;
-	right: 0px;
-	z-index: 0;
-	display: inline;
+#top-tag {
+	width: 160px;
+	height: 200px;
+	box-shadow: 0px 3px 5px rgba(0,0,0,.7);
+	background-color: rgba(0,0,0,.4);
+	border-radius: 0px 0px 8px 8px;
+	/*box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);*/
 }
 
-#small-banner-tabs {
-	position: absolute;
-	display: none;
-	height: 50px;
-	top: 52px;
-	right: 0px;
-	z-index: 0;
-}
-
-#button-0,
-#button-1,
-#button-2,
-#button-3 {
-	/*fill: url("#linearGradient3924");*/
-	/*fill-opacity: 1.0;
-	filter: url("#dark-blur");
-	transition: all 1.8s ease;*/
-	cursor: pointer;
-	pointer-events: all;
-}
-
-#svg-menu-buttons text {
-	pointer-events: none;
-}
-
-#button-0:hover,
-#button-1:hover,
-#button-2:hover,
-#button-3:hover {
-	fill: var(--red-b);
-	fill-opacity: .8;
-	transition: all 1.2s ease;
-	cursor: pointer;
-}
-
-
-#logo {
-	width: 250px;
-	position: absolute;
-	left: 124px;
-	top: 17px;
-	z-index: 1;
-}
-
-#logo:hover {
-	cursor: pointer;
+#top-tag-inner {
+	width: 148px;
+	height: 194px;
+	margin:	auto;
+	background-color: var(--white-b);
+	border-radius: 0px 0px 8px 8px;
 }
 
 
 .nav-desktop, .top-bar {
-	background-color: transparent;
-	height: 51px;
+	background-color: var(--dark-a);
+	height: 55px;
 	padding: 0px;
-	line-height: 51px;
-	position: relative;
-	/*z-index: 2;*/
+	line-height: 55px;
+	box-shadow: 0px 2px 3px rgba(0,0,0,.7);
+	position: fixed;
+	width: 100%;
+	z-index: 1;
 }
 
-#top-menu {
-	margin-right: 40px;
-}
 
 .menu > li > a {
     display: inline-block;
-    line-height: 51px;
+    line-height: 55px;
     padding-top: 0px;
     padding-bottom: 0px;
-    padding-right: 5px;
-    padding-left: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
     }
 
 
 
 .menuitem {
 	color: var(--white-b);
-	background-color: var(--red-b);
+	background-color: var(--dark-a);
 	font-family: 'Ubuntu';
 	font-weight: bold;
-	font-size: .9em;
+	font-size: 1em;
 }
 
 .menuitem:hover {
-	color: var(--white-a);
+	color: var(--blue-a);
+	background-color: rgba(1,1,1,.75);
 }
+
 
 
 
@@ -171,11 +121,9 @@ MOBILE - NAV
 
 .title-bar-title {
 	font-size: 1em;
-	color: #EEE;
+	color: var(--white-b);
 	font-family: 'Ubuntu';
 }
-
-
 
 
 
@@ -184,35 +132,170 @@ MOBILE - NAV
 HERO
 *************************************************************** */
 
-.hero {
-	height: 200px;
-	position: relative;
-	z-index: 0;
+#hero-tiny, #hero-small {
+	color: var(--white-b);
 }
 
+#hero-tiny {
+	font-size: 1em;
+}
+
+.pac-item {
+	font-family: "Ubuntu";
+	border-top: 1px;
+}
+
+.pac-container {
+	box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+	font-family: "Ubuntu";
+}
+
+#hero-box {
+	max-width: 700px;
+}
+
+
+.hero {
+	min-height: 500px;
+	background: url("../img/mountains.png");
+	background-size: cover;
+	background-color: var(--red-b);
+	box-shadow: 0px 3px 2px rgba(0,0,0,.7);
+	position: relative;
+	padding-top: 70px;
+}
+
+.hero #hero-big {
+	color: var(--white-a);
+	font-size: 8em;
+	letter-spacing: -5px;
+	margin-bottom: 0px;
+	line-height: 1.2em;
+}
+
+
+
+.hero-search {
+	float: right;
+}
+
+.postal-search-bar {
+    width: 470px;
+    padding: 8px;
+    margin: 20px auto 20px 0px;
+    background: rgba(0,0,0,.2);
+    border-radius: 10px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+    height: 56px;
+}
+
+.cf:before, .cf:after{
+    content:"";
+    display:table;
+}
+
+.cf:after{
+    clear:both;
+}
+
+.postal-search-bar input {
+    width: 330px;
+    height: 40px;
+    padding: 0px 5px;
+    float: left;    
+    font: bold 15px 'lucida sans', 'trebuchet MS', 'Ubuntu';
+    border: 0;
+    background: #eee;
+    border-radius: 3px 0 0 3px;      
+}
+
+.postal-search-bar input:focus {
+    outline: 0;
+    background: #fff;
+    box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+}
+
+.postal-search-bar input::-webkit-input-placeholder {
+   color: var(--dark-a);
+   font-weight: normal;
+   font-style: italic;
+}
+
+.postal-search-bar input::-moz-placeholder {
+    color: var(--dark-a);
+    font-weight: normal;
+    font-style: italic;
+}
+
+.postal-search-bar input::-ms-input-placeholder {
+    color: var(--dark-a);
+    font-weight: normal;
+    font-style: italic;
+}    
+
+/* Form submit button */
+.postal-search-bar button {
+    overflow: visible;
+    position: relative;
+    float: right;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    height: 40px;
+    width: 124px;
+    font: bold 20px/40px 'lucida sans', 'trebuchet MS', 'Ubuntu';
+    color: #fff;
+    text-transform: uppercase;
+    background: #d83c3c;
+    border-radius: 0 3px 3px 0;      
+    text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+}   
+  
+.postal-search-bar button:hover{		
+    background: #e54040;
+}	
+  
+.postal-search-bar button:active,
+.postal-search-bar button:focus{   
+    background: #c42f2f;
+	outline: 0;   
+}
+
+.postal-search-bar button:before { /* left arrow */
+    content: '';
+    position: absolute;
+    border-width: 8px 8px 8px 0;
+    border-style: solid solid solid none;
+    border-color: transparent #d83c3c transparent;
+    top: 12px;
+    left: -6px;
+}
+
+.postal-search-bar button:hover:before{
+    border-right-color: #e54040;
+}
+
+.postal-search-bar button:focus:before,
+.postal-search-bar button:active:before{
+        border-right-color: #c42f2f;
+}      
+
+.postal-search-bar button::-moz-focus-inner { /* remove extra button spacing for Mozilla Firefox */
+    border: 0;
+    padding: 0;
+} 
 
 
 /* ***************************************************************
 MAIN
 *************************************************************** */
-.main {
-	min-height: 100vh;
-}
 
-#main-province {
-	display: none;
-}
 
-.hero-ws {
-	height: 100px;
-	z-index: -2;
-	visibility: hidden;
-}
-
-.map-container {
-	height: auto;
-	margin: 0;
-	padding: 60px;
+#province-map {
+	max-height: 90vh;
+	display: block;
+	margin:	auto;
+	padding: 20px;
 }
 
 svg #AB, 
@@ -230,7 +313,6 @@ svg #NT,
 svg #NU {
 	fill: url("#map-texture-base");
 	fill-opacity: .8;
-	transition: transform .8s ease!important;
 }
 
 
@@ -248,17 +330,11 @@ svg #NL:hover,
 svg #YT:hover, 
 svg #NT:hover, 
 svg #NU:hover {
-	fill: url("#map-texture-hover")!important;
-	fill-opacity: 1.0!important;
-	transition: transform .8s ease!important;
-	stroke: #226077!important;
-	stroke-width: 3!important;
-}
-
-
-#mapboxmap {
-	height: 500px;
-	width: 70%;
+	fill: url("#map-texture-hover");
+	fill-opacity: 1.0;
+	transition: all .8s ease;
+	stroke: #226077;
+	stroke-width: 3;
 }
 
 
@@ -294,6 +370,7 @@ footer a:hover {
 footer a span {
 	font-weight: bold;
 	color: var(--dark-a);
+	padding-right: 3px;
 }
 
 
