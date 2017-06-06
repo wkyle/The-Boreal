@@ -197,6 +197,7 @@ HERO
 
 #hero-box {
 	max-width: 700px;
+	margin-left: 200px;
 }
 
 
@@ -212,7 +213,7 @@ HERO
 
 .hero #hero-big {
 	color: var(--white-a);
-	font-size: 8em;
+	font-size: 7em;
 	letter-spacing: -5px;
 	margin-bottom: 0px;
 	line-height: 1.2em;
@@ -428,7 +429,7 @@ MEDIA QUERIES
 *************************************************************** */
 
 
-@media (max-width: 624px) {
+@media (max-width: 830px) {
 	footer h4 {
 		font-variant: small-caps;
 		font-weight: bold;
@@ -440,17 +441,68 @@ MEDIA QUERIES
 		text-align: center;
 	}
 
+	.hero #hero-big {
+		font-size: 4em;
+		letter-spacing: -5px;
+		margin-bottom: 0px;
+		line-height: 1.2em;
+	}
+
+	.hero #hero-small {
+		font-size: 1.5em;
+	}
+
+	.hero #hero-tiny {
+		font-size: 1em;
+	}
+
+	#top-tag {
+		height: 55px;
+	    background-color: #282828;
+	    border-radius: 0;
+	    box-shadow: none;
+	    border: none;
+	    background-image: linear-gradient(#282828, #282828, #181818);
+	}
+
+	.top-tag-text {
+		visibility: hidden;
+	}
+
+	#top-title {
+		display: inline;
+	}
+
+	#hero-box {
+	    margin: auto;
+	    text-align: center;
+	    width: 80vw;
+	}
+
+	.hero-search {
+		float: none;
+		margin: auto;
+	}
+
+	.postal-search-bar {
+		margin: auto;
+	}
 
 }
 
 
-@media (max-width: 1060px) {
-	#banner-tabs {
-		display: none;
+@media (max-width: 600px) {
+	
+	.postal-search-bar {
+		width: 336px;
 	}
 
-	#small-banner-tabs {
-		display: inline;
+	.postal-search-bar input {
+		width: 240px;
+	}
+
+	.postal-search-bar button {
+		width: 80px;
 	}
 
 }

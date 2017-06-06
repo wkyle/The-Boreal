@@ -2,10 +2,11 @@ $(document).foundation()
 
 var electionsXML; 
 var geocoder;
-var nextElectionDate = new Date(2019, 10, 21)
-var todaysDate;
+
 
 function initialize() {
+    initElectionCountdown()
+    createPageWaypoints()
     loadXML();
     geocoder = new google.maps.Geocoder();
     var input = document.getElementById('address-input');
@@ -13,55 +14,62 @@ function initialize() {
       componentRestrictions: {country: 'ca'}
     };
     autocomplete = new google.maps.places.Autocomplete(input, options);
-    todaysDate = new Date()
-    var electionCountdownDays = Math.floor((nextElectionDate - todaysDate) / (1000*60*60*24))
-    $("#election-countdown span").html(String(electionCountdownDays))
+
 }
 
 
+function initElectionCountdown() {
+    var nextElectionDate = new Date(2019, 10, 21)
+    var todaysDate;
+    todaysDate = new Date()
+    var electionCountdownDays = Math.floor((nextElectionDate - todaysDate) / (1000*60*60*24))
+    $("#election-countdown span").html(String(electionCountdownDays))    
+}
 
 
-var waypoint = new Waypoint({
-  element: document.getElementsByTagName('body')[0],
-  handler: function(direction) {
-    if (direction == "down") {
-        $("#top-tag").animate({
-        height: '55px',
-        backgroundColor: '#282828',
-        borderRadius: '0'
-        }, "fast");
-        $("#top-tag").css({
-            "box-shadow": "none",
-            "border": "none",
-            "background-image": "linear-gradient(#282828, #282828, #181818)"
-        });
-        $(".top-tag-text").css({
-            "visibility": "hidden"
-        });
-        $("#top-title").css({
-            "display": "inline"
-        });
+function createPageWaypoints() {
+    var waypoint = new Waypoint({
+      element: document.getElementsByTagName('body')[0],
+      handler: function(direction) {
+        if (Waypoint.viewportWidth() > 830) {
+            if (direction == "down") {
+                $("#top-tag").animate({
+                height: '55px',
+                backgroundColor: '#282828',
+                borderRadius: '0'
+                }, "fast");
+                $("#top-tag").css({
+                    "box-shadow": "none",
+                    "border": "none",
+                    "background-image": "linear-gradient(#282828, #282828, #181818)"
+                });
+                $(".top-tag-text").css({
+                    visibility: "hidden"
+                });
+                $("#top-title").css({
+                    "display": "inline"
+                });
 
-    } else {
+            } else {
 
-        $("#top-tag").animate({
-        height: '200px',
-        backgroundColor: '#E0E0E0'
-        }, "fast");
-        $("#top-tag").css({"border-radius": "0px 0px 8px 8px", 
-                           "box-shadow": "0px 3px 4px rgba(0,0,0,.7)",
-                           "border": "2px solid #484848",
-                           "border-top": "none",
-                           "background-image": "none"});
-        $(".top-tag-text").css({
-            "visibility": "visible"
-        });
-        $("#top-title").css({
-            "display": "none"
-        });
-    }
-  }, offset: -80
-})
+                $("#top-tag").animate({
+                height: '200px',
+                backgroundColor: '#E0E0E0'
+                }, "fast");
+                $("#top-tag").css({"border-radius": "0px 0px 8px 8px", 
+                                   "box-shadow": "0px 3px 4px rgba(0,0,0,.7)",
+                                   "border": "2px solid #484848",
+                                   "border-top": "none",
+                                   "background-image": "none"});
+                $(".top-tag-text").css({
+                    "visibility": "visible"
+                });
+                $("#top-title").css({
+                    "display": "none"
+                });
+            }};
+        }, offset: -80
+    })};
 
 
 $( ".postal-search-bar button" ).click(function() {
