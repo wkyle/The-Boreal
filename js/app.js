@@ -3,9 +3,13 @@ $(document).foundation()
 var electionsXML; 
 var geocoder;
 
+// $(document).ready(function(){
+//     initElectionCountdown()
+// });
+
 
 function initialize() {
-    initElectionCountdown()
+    // initElectionCountdown()
     createPageWaypoints()
     loadXML();
     geocoder = new google.maps.Geocoder();
@@ -78,15 +82,21 @@ $( ".postal-search-bar button" ).click(function() {
     var address = $("#address-input").val();
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == 'OK') {
-        coord2FED([results[0].geometry.location.lng(), results[0].geometry.location.lat()], provincesGeo);
-        //Convert coords to FED ID and load appropriate page. 
-        //Store FED ID in session storage for the next page to load XML and fill in data
+        var fedID = coord2FED([results[0].geometry.location.lng(), results[0].geometry.location.lat()], provincesGeo);
+
+        //check if browser supports local storage
+        if (typeof(Storage) !== "undefined") {
+            // Code for localStorage/sessionStorage.
+        } else {
+            // Sorry! No Web Storage support..
+        }
+
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
     });
 
-  } else {alert("hi")};
+  };
 });
 
 
@@ -170,7 +180,6 @@ function coord2FED (point, geojson) {
     features.forEach(function (f) {
         if(d3.geoContains(f, point)) {
             fedID = f.properties.FEDUID
-            alert(f.properties.FEDENAME)
         }
     });
     return fedID
