@@ -31,7 +31,7 @@ function createPageWaypoints() {
     var waypoint = new Waypoint({
       element: document.getElementsByTagName('body')[0],
       handler: function(direction) {
-        if (Waypoint.viewportWidth() > 830) {
+        if (Waypoint.viewportWidth() > 815) {
             if (direction == "down") {
                 $("#top-tag").animate({
                 height: '55px',

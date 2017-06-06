@@ -50,6 +50,10 @@ DESKTOP - NAV
 	background-color: transparent;
 }
 
+.top-bar .top-bar-left, .top-bar .top-bar-right {
+	width: auto;
+}
+
 
 
 #top-tag {
@@ -68,6 +72,10 @@ DESKTOP - NAV
 	color: var(--white-a);
 	font-size: 30px;
 	font-weight: 500;
+}
+
+.menu-icon {
+	display: none;
 }
 
 #top-title:hover {
@@ -429,7 +437,7 @@ MEDIA QUERIES
 *************************************************************** */
 
 
-@media (max-width: 830px) {
+@media screen and (max-width: 830px) {
 	footer h4 {
 		font-variant: small-caps;
 		font-weight: bold;
@@ -457,20 +465,28 @@ MEDIA QUERIES
 	}
 
 	#top-tag {
-		height: 55px;
-	    background-color: #282828;
-	    border-radius: 0;
-	    box-shadow: none;
-	    border: none;
-	    background-image: linear-gradient(#282828, #282828, #181818);
+		height: 55px!important;
+	    background-color: #282828!important;
+	    border-radius: 0!important;
+	    box-shadow: none!important;
+	    border: none!important;
+	    background-image: linear-gradient(#282828, #282828, #181818)!important;
 	}
 
 	.top-tag-text {
-		visibility: hidden;
+		visibility: hidden!important;
 	}
 
 	#top-title {
-		display: inline;
+		display: inline!important;
+	}
+
+	.menu-icon {
+		display: inline-block;
+	}
+
+	#top-menu {
+		display: none;
 	}
 
 	#hero-box {
@@ -491,18 +507,18 @@ MEDIA QUERIES
 }
 
 
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
 	
 	.postal-search-bar {
-		width: 336px;
+		width: 80vw;
 	}
 
 	.postal-search-bar input {
-		width: 240px;
+		width: calc(80vw - 16px - 50px);
 	}
 
 	.postal-search-bar button {
-		width: 80px;
+		width: 50px;
 	}
 
 }
