@@ -22,7 +22,7 @@ var geocoder;
 
 function initialize() {
     createPageWaypoints()
-    // loadXML();
+    loadXML();
     geocoder = new google.maps.Geocoder();
     var input = document.getElementById('address-input');
     var options = {
