@@ -105,8 +105,6 @@ $( ".postal-search-bar button" ).click(function() {
 
         window.location = url
 
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
       }
     });
 
@@ -123,7 +121,10 @@ $( ".postal-search-bar button" ).click(function() {
 
 function provinceClick(evt) {
     if (Boolean(electionsXML)){
-        initMapBoxMap();
+        var queryString = "?province=" + evt.target.parentNode.getAttribute("id")
+        var url = "../provinces" + queryString
+
+        window.location = url
     }
 };
 
@@ -159,7 +160,7 @@ function loadXML() {
             electionsXML = this.responseXML;
     	}
   	};
-  	xhttp.open("GET", "file:///home/wes/Personal/theBoreal/Foundation6/boreal_1/data/FED2015.xml", true);
+  	xhttp.open("GET", "data/FED2015.xml", true);
   	xhttp.send();
 } 
 
