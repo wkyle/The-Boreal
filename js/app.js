@@ -1,15 +1,26 @@
 $(document).foundation()
 
+
+
+
+
+
+//*****************************************************************
+//   PAGE GLOBAL VARIABLES
+//*****************************************************************
+
+
 var electionsXML; 
 var geocoder;
 
-// $(document).ready(function(){
-//     initElectionCountdown()
-// });
+
+
+//*****************************************************************
+//   PAGE INITIALIZATION
+//*****************************************************************
 
 
 function initialize() {
-    // initElectionCountdown()
     createPageWaypoints()
     loadXML();
     geocoder = new google.maps.Geocoder();
@@ -76,6 +87,12 @@ function createPageWaypoints() {
     })};
 
 
+
+//*****************************************************************
+//   LISTENERS
+//*****************************************************************
+
+
 $( ".postal-search-bar button" ).click(function() {
   var string = $(".postal-search-bar input").val()
   if (Boolean(string)) {
@@ -83,13 +100,10 @@ $( ".postal-search-bar button" ).click(function() {
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == 'OK') {
         var fedID = coord2FED([results[0].geometry.location.lng(), results[0].geometry.location.lat()], provincesGeo);
+        var queryString = "?fedid=" + String(fedID)
+        var url = "./FEDs" + queryString
 
-        //check if browser supports local storage
-        if (typeof(Storage) !== "undefined") {
-            // Code for localStorage/sessionStorage.
-        } else {
-            // Sorry! No Web Storage support..
-        }
+        window.location = url
 
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
@@ -100,6 +114,11 @@ $( ".postal-search-bar button" ).click(function() {
 });
 
 
+
+
+//*****************************************************************
+//   OTHER FUNCTIONS
+//*****************************************************************
 
 
 function provinceClick(evt) {
