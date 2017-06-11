@@ -60,7 +60,13 @@ function initializeProvincePage() {
     }
 
     var province = data[0].slice(-2)
-    initMapBoxMap(province);
+    var mapdataURI = "../data/shapefiles/" + province + "/" + province + "-multiPart-simplified.json"
+    d3.json(mapdataURI, function (er, mapdata) {
+        initMapBoxMap(mapdata);
+        console.log(mapdataURI)
+        console.log(er)
+    });
+
 
 }
 
@@ -220,7 +226,7 @@ function getPhoto() {
 
 
 
-function initMapBoxMap(province) {
+function initMapBoxMap(mapdata) {
     var mapBoxAccessToken = "sk.eyJ1Ijoid3JreWxlIiwiYSI6ImNpenp0am9rZTA0bGczM2xzdG41ODlrNXQifQ.d3sWSdM74ogzw6hdXkQTHw";
     var mymap = L.map('mapboxmap', {attributionControl: false}).setView([61, -95], 3.6);
 
@@ -230,8 +236,9 @@ function initMapBoxMap(province) {
         id: 'mapbox.light',
         accessToken: mapBoxAccessToken
     }).addTo(mymap);
+    console.log("map data given to initmapbox: " + mapdata)
 
-    L.geoJson(mapVariableFromName(province)).addTo(mymap);
+    L.geoJson(mapdata).addTo(mymap);
 }
 
 
