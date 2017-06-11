@@ -233,7 +233,7 @@ function initMapBoxMap(mapdata) {
     var corner2 = L.latLng(bbox[3] + 0.1*(bbox[3] - center[0]), 
                            bbox[2] + 0.1*(bbox[2] - center[1]));
     var mapbounds = L.latLngBounds(corner1, corner2)
-    var mymap = L.map('mapboxmap', {attributionControl: false, maxBounds: mapbounds}).setView([61, -95], 3);
+    var mymap = L.map('mapboxmap', {attributionControl: false, fitBounds: mapbounds, maxBounds: mapbounds}).setView([61, -95], 3);
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: '',
