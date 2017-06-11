@@ -59,7 +59,8 @@ function initializeProvincePage() {
         data[i] = decodeURI(data[i]);
     }
 
-    console.log(data[0].slice(-2))
+    var province = data[0].slice(-2)
+    initMapBoxMap(province);
 
 }
 
@@ -219,7 +220,7 @@ function getPhoto() {
 
 
 
-function initMapBoxMap() {
+function initMapBoxMap(province) {
     var mapBoxAccessToken = "sk.eyJ1Ijoid3JreWxlIiwiYSI6ImNpenp0am9rZTA0bGczM2xzdG41ODlrNXQifQ.d3sWSdM74ogzw6hdXkQTHw";
     var mymap = L.map('mapboxmap', {attributionControl: false}).setView([61, -95], 3.6);
 
@@ -230,9 +231,44 @@ function initMapBoxMap() {
         accessToken: mapBoxAccessToken
     }).addTo(mymap);
 
-    L.geoJson(NLGeo, {filter: filterGeoJSON}).addTo(mymap);
+    L.geoJson(mapVariableFromName(province)).addTo(mymap);
 }
 
+
+
+//I don't like loading all the map data at start
+//In future I want to async load only the requested province
+//when the page requests it
+function mapVariableFromName(name) {
+    switch(name) {
+        case "AB":
+            return var ABGeo;
+        case "BC":
+            return var BCGeo;
+        case "SK":
+            return var SKGeo;
+        case "MB":
+            return var MBGeo;
+        case "ON":
+            return var ONGeo;
+        case "QC":
+            return var QCGeo;
+        case "NB":
+            return var NBGeo;
+        case "NS":
+            return var NSGeo;
+        case "PE":
+            return var PEGeo;
+        case "NL":
+            return var NLGeo;
+        case "YT":
+            return var YTGeo;
+        case "NT":
+            return var NTGeo;
+        case "NU":
+            return var NUGeo;
+    }
+}
 
 
 function seatMapClick(evt) {
