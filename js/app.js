@@ -232,7 +232,7 @@ function initMapBoxMap(mapdata) {
     var corner2 = L.latLng(bbox[3], bbox[2])
     var mapbounds = L.latLngBounds(corner1, corner2).pad(0.05)
 
-    var mymap = L.map('mapboxmap', {attributionControl: false, center: center, fitBounds: mapbounds});
+    var mymap = L.map('mapboxmap', {attributionControl: false, center: center});
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: '',
@@ -240,7 +240,7 @@ function initMapBoxMap(mapdata) {
         accessToken: mapBoxAccessToken
     }).addTo(mymap);
     L.geoJson(mapdata).addTo(mymap);
-    // mymap.fitBounds(mapbounds)
+    mymap.fitBounds(mapbounds)
 }
 
 
