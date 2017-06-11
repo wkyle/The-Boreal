@@ -240,9 +240,6 @@ function initMapBoxMap(mapdata) {
     }).addTo(mymap);
     L.geoJson(mapdata).addTo(mymap);
     mymap.fitBounds(mapbounds)
-    // mymap.options.zoomDelta = .2;
-    console.log(corner1)
-    console.log(corner2)
 }
 
 
@@ -254,10 +251,9 @@ function loadXML() {
 	xhttp.onreadystatechange = function() {
     	if (this.readyState == 4 && this.status == 200) {
             electionsXML = this.responseXML;
-            // getPhoto()
     	}
   	};
-  	xhttp.open("GET", "data/FED2015.xml", true);
+  	xhttp.open("GET", "/data/FED2015.xml", true);
   	xhttp.send();
 } 
 
