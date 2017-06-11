@@ -245,6 +245,7 @@ function initMapBoxMap(mapdata) {
         accessToken: mapBoxAccessToken
     }).addTo(mymap);
     L.geoJson(mapdata).addTo(mymap);
+    mymap.fitBounds(mapbounds)
 }
 
 
