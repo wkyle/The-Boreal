@@ -59,7 +59,7 @@ function initializeProvincePage() {
         data[i] = decodeURI(data[i]);
     }
 
-    console.log(data)
+    console.log(data[0].slice(-2,-1))
 
 }
 
