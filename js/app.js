@@ -242,31 +242,44 @@ function initMapBoxMap(province) {
 function mapVariableFromName(name) {
     switch(name) {
         case "AB":
-            return var ABGeo;
+            var ABGeo;
+            return ABGeo;
         case "BC":
-            return var BCGeo;
+            var BCGeo;
+            return BCGeo;
         case "SK":
-            return var SKGeo;
+            var SKGeo;
+            return SKGeo;
         case "MB":
-            return var MBGeo;
+            var MBGeo;
+            return MBGeo;
         case "ON":
-            return var ONGeo;
+            var ONGeo;
+            return ONGeo;
         case "QC":
-            return var QCGeo;
+            var QCGeo;
+            return QCGeo;
         case "NB":
-            return var NBGeo;
+            var NBGeo;
+            return NBGeo;
         case "NS":
-            return var NSGeo;
+            var NSGeo;
+            return NSGeo;
         case "PE":
-            return var PEGeo;
+            var PEGeo;
+            return PEGeo;
         case "NL":
-            return var NLGeo;
+            var NLGeo;
+            return NLGeo;
         case "YT":
-            return var YTGeo;
+            var YTGeo;
+            return YTGeo;
         case "NT":
-            return var NTGeo;
+            var NTGeo;
+            return NTGeo;
         case "NU":
-            return var NUGeo;
+            var NUGeo;
+            return NUGeo;
     }
 }
 
