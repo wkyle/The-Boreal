@@ -63,7 +63,7 @@ function initializeProvincePage() {
     var mapdataURI = "../data/shapefiles/" + province + "/" + province + "-multiPart-simplified.json"
     d3.json(mapdataURI, function (er, mapdata) {
         initMapBoxMap(mapdata);
-        console.log(mapdata[bbox])
+        console.log(mapdata.toSource())
     });
 
 
