@@ -10,7 +10,7 @@ $(document).foundation()
 //*****************************************************************
 
 
-var electionsXML; 
+var electionsXML;
 var geocoder;
 
 
@@ -42,29 +42,35 @@ function initElectionCountdown() {
 
 function initializeProvincePage() {
     createPageWaypoints()
-    geocoder = new google.maps.Geocoder();
-    var input = document.getElementById('address-input');
-    var options = {
-      componentRestrictions: {country: 'ca'}
-    };
-    autocomplete = new google.maps.places.Autocomplete(input, options);
-
-    var query = window.location.search;
-    if (query.substring(0, 1) == '?') {
-        query = query.substring(1);
-    }
-    var data = query.split(',');
-    for (i = 0; (i < data.length); i++) {
-        data[i] = decodeURI(data[i]);
-    }
-
-    var province = data[0].slice(-2)
+    initLocationSearchBar()
+    var province = provinceFromQueryString()
     var mapdataURI = "../data/shapefiles/" + province + "/" + province + "-multiPart-simplified.json"
     d3.json(mapdataURI, function (er, mapdata) {
         initMapBoxMap(mapdata);
     });
     loadXML();
 
+}
+
+
+function initLocationSearchBar() {
+    geocoder = new google.maps.Geocoder();
+    var input = document.getElementById('address-input');
+    var options = {
+      componentRestrictions: {country: 'ca'}
+    };
+    autocomplete = new google.maps.places.Autocomplete(input, options);    
+}
+
+function provinceFromQueryString() {
+    var query = window.location.search;
+    if (query.substring(0, 1) == '?') {
+        query = query.substring(1);
+    }
+    var data = decodeURI(query)
+
+    var province = data.slice(-2)    
+    return abbrev
 }
 
 function initializeFEDPage() {
