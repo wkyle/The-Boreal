@@ -235,7 +235,7 @@ function initMapBoxMap(mapdata) {
     var corner1 = L.latLng(bbox[1], bbox[0])
     var corner2 = L.latLng(bbox[3], bbox[2])
 
-    var mapbounds = L.latLngBounds(corner1, corner2).pad(0.5)
+    var mapbounds = L.latLngBounds(corner1, corner2).pad(0.05)
     var mymap = L.map('mapboxmap', {attributionControl: false, center: center, fitBounds: mapbounds});
     console.log(center)
     console.log(mapbounds)
