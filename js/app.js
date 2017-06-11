@@ -226,10 +226,10 @@ function getPhoto() {
 
 function initMapBoxMap(mapdata) {
     var mapBoxAccessToken = "sk.eyJ1Ijoid3JreWxlIiwiYSI6ImNpenp0am9rZTA0bGczM2xzdG41ODlrNXQifQ.d3sWSdM74ogzw6hdXkQTHw";
-    var corner1 = L.latLng(mapdata["bbox"][1], mapdata["bbox"][0]);
-    var corner2 = L.latLng(mapdata["bbox"][3], mapdata["bbox"][2]);
+    var corner1 = L.latLng(mapdata["bbox"][1]-1, mapdata["bbox"][0]-1);
+    var corner2 = L.latLng(mapdata["bbox"][3]+1, mapdata["bbox"][2]+1);
     var mapbounds = L.latLngBounds(corner1, corner2)
-    var mymap = L.map('mapboxmap', {attributionControl: false, maxBounds: mapbounds}).setView([61, -95], 3.6);
+    var mymap = L.map('mapboxmap', {attributionControl: false, maxBounds: mapbounds}).setView([61, -95], 3);
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: '',
