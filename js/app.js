@@ -42,7 +42,6 @@ function initElectionCountdown() {
 
 function initializeProvincePage() {
     createPageWaypoints()
-    loadXML();
     geocoder = new google.maps.Geocoder();
     var input = document.getElementById('address-input');
     var options = {
@@ -64,7 +63,7 @@ function initializeProvincePage() {
     d3.json(mapdataURI, function (er, mapdata) {
         initMapBoxMap(mapdata);
     });
-
+    loadXML();
 
 }
 
