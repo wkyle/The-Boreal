@@ -230,7 +230,7 @@ function initMapBoxMap(mapdata) {
     var center = [(bbox[1] + bbox[3])/2, (bbox[0] + bbox[2])/2]
     var corner1 = L.latLng(bbox[1], bbox[0])
     var corner2 = L.latLng(bbox[3], bbox[2])
-    var mapbounds = L.latLngBounds(corner1, corner2).pad(0.05)
+    var mapbounds = L.latLngBounds(corner1, corner2).pad(0.02)
 
     var mymap = L.map('mapboxmap', {attributionControl: false, center: center});
 
