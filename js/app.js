@@ -240,7 +240,7 @@ function initMapBoxMap(mapdata) {
     }).addTo(mymap);
     L.geoJson(mapdata).addTo(mymap);
     mymap.fitBounds(mapbounds)
-    // mymap.options.zoomDelta
+    mymap.options.zoomDelta = .2;
     console.log(corner1)
     console.log(corner2)
 }
