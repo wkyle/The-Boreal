@@ -236,6 +236,8 @@ function initMapBoxMap(mapdata) {
     var mymap = L.map('mapboxmap', {attributionControl: false, center: center, zoom: 4, fitBounds: mapbounds});
     console.log(center)
     console.log(mapbounds)
+    console.log(corner1)
+    console.log(corner2)
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: '',
         maxZoom: 18,
