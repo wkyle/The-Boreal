@@ -63,7 +63,6 @@ function initializeProvincePage() {
     var mapdataURI = "../data/shapefiles/" + province + "/" + province + "-multiPart-simplified.json"
     d3.json(mapdataURI, function (er, mapdata) {
         initMapBoxMap(mapdata);
-        console.log(mapdata["bbox"])
     });
 
 
@@ -235,9 +234,10 @@ function initMapBoxMap(mapdata) {
         id: 'mapbox.light',
         accessToken: mapBoxAccessToken
     }).addTo(mymap);
-    console.log("map data given to initmapbox: " + mapdata)
 
-    L.geoJson(mapdata).addTo(mymap);
+var corner1 = L.latLng(mapdata["bbox"][1], mapdata["bbox"][0]);
+var corner2 = L.latLng(mapdata["bbox"][3], mapdata["bbox"][2]);
+    L.geoJson(mapdata, {maxBounds: L.latLngBounds(corner1, corner2);}).addTo(mymap);
 }
 
 
