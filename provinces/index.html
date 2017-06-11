@@ -8,8 +8,16 @@
     	<link rel="stylesheet" href="../css/foundation.css">
     	<link rel="stylesheet" href="../css/app.css">
     	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css">
+
+      <script>
+        window.addEventListener("DOMContentLoaded", function() {
+          initElectionCountdown()
+        }, false);
+      </script>
+
+
   	</head>
-  	<body onload=initialize()>
+  	<body onload=initializeProvincePage()>
 
 
       	<!-- NAVIGATION -->
@@ -26,26 +34,26 @@
           <div class="wrap">
             <div class="top-bar-left">
               <div id="top-tag">
-                <a id="top-title" href="../">BOREAL</a>
+                <a id="top-title" href="./">BOREAL</a>
                 <h4 class="top-tag-text" id="top-tag-next">NEXT ELECTION</h4>
-                <h1 class="top-tag-text" id="election-countdown"><span>---</span></h1>
+                <h1 class="top-tag-text" id="election-countdown"><span>– – –</span></h1>
                 <h4 class="top-tag-text" id="top-tag-days"><span>DAYS</span></h4>
               </div>
             </div>
 
-      		  <div class="top-bar-right">
+            <div class="top-bar-right">
               <button class="menu-icon" type="button" data-open="mobile-drop-menu"></button>
               <ul id="top-menu" class="menu">
-                <li><a class="menuitem" href="../">Home</a></li>
-                <li><a class="menuitem" href="../about">About</a></li>
-                <li><a class="menuitem" href="../contribute">Contribute</a></li>
-                <li><a class="menuitem" href="../data">Data</a></li>
-                <li><a class="menuitem" href="../contact">Contact</a></li>
+                <li><a class="menuitem" href="./">Home</a></li>
+                <li><a class="menuitem" href="./about">About</a></li>
+                <li><a class="menuitem" href="./contribute">Contribute</a></li>
+                <li><a class="menuitem" href="./data">Data</a></li>
+                <li><a class="menuitem" href="./contact">Contact</a></li>
               </ul>
             </div>
             
           </div>
-      	</nav>
+        </nav>
 
 
 
@@ -55,7 +63,7 @@
 
 
 
-      	<div class="hero">
+        <div class="hero">
           <div class="wrap">
           <!-- <div id="leaf-image"></div> -->
             <div id="hero-box" class="hero-search cf">
@@ -86,7 +94,14 @@
 
 
 
-
+        <!-- Modal dialog for bad address -->
+        <div class="reveal" id="bad-address-popup" data-reveal>
+          <h1>Couldn't find your federal riding</h1>
+          <p>Find your riding with the map instead.</p>
+          <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
 
 
 
@@ -94,46 +109,51 @@
 
 		<!-- FOOTER -->
 
-		<footer>
+    <footer>
             <div class="wrap row small-up-1 medium-up-3">
-              	<div class="column">
-	                <h4>Contact Info</h4>
-	                <hr>
-	                <a href="#"><span>Phone</span>  555-555-555</a>
-	                <a href="mailto:peter_is_a_noob@PJL.ca"><span>Email</span>  contact@theboreal.ca</a>
-	                <a href="#"><span>Address</span>  123 Center Street, NW</a>
-              	</div>
-              	<div class="column">
-	                <h4>Site Map</h4>
-	                <hr>
-	                <a href="../about">About</a>
-	                <a href="../contribute">Contribute</a>
-	                <a href="../data">Data</a>
-	                <a href="../contact">Contact Us</a>
-              	</div>
-              	<div class="column">
-	                <h4>Social Media</h4>
-	                <hr>
-	                <a href="https://www.facebook.com/" target="_blank">Facebook</a>
-	                <a href="https://twitter.com/" target="_blank">Twitter</a>
-	                <a href="https://www.youtube.com/" target="_blank">YouTube</a>
-	                <!-- <a href="#">Reddit</a> -->
-              	</div>
+                <div class="column">
+                  <h4>Contact Info</h4>
+                  <hr>
+                  <a href=".././"><span>Phone</span>  555-555-555</a>
+                  <a href="mailto:peter_is_a_noob@PJL.ca"><span>Email</span>  contact@theboreal.ca</a>
+                  <a href=".././"><span>Address</span>  123 Center Street, NW</a>
+                </div>
+                <div class="column">
+                  <h4>Site Map</h4>
+                  <hr>
+                  <a href=".././about">About</a>
+                  <a href=".././contribute">Contribute</a>
+                  <a href=".././data">Data</a>
+                  <a href=".././contact">Contact Us</a>
+                </div>
+                <div class="column">
+                  <h4>Social Media</h4>
+                  <hr>
+                  <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+                  <a href="https://twitter.com/" target="_blank">Twitter</a>
+                  <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+                  <!-- <a href="#">Reddit</a> -->
+                </div>
             </div>
         </footer>
 
 
-      <script src="../data/shitty-test.js"></script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTX-BLGDx5poEQG1-ar38rQcFSSE5sOa4&libraries=places"></script>
+      <!-- GEOJSON FILES -->
       <script src="../data/shapefiles/CA-multiPart-simplified/CA-FED-map.js"></script>
-		  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-    	<script src="../js/vendor/jquery.js"></script>
+      <script src="../data/shapefiles/NL/NL-multiPart-simplified.js"></script>
+
+      <!-- MAPPING -->
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTX-BLGDx5poEQG1-ar38rQcFSSE5sOa4&libraries=places"></script>
+      <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+      
+      <!-- PAGE FUNCTIONALITY -->
+      <script src="../js/vendor/jquery.js"></script>
       <script src="../js/vendor/jquery.color-2.1.2.min.js"></script>
-    	<script src="../js/vendor/what-input.js"></script>
-    	<script src="../js/vendor/foundation.js"></script>
+      <script src="../js/vendor/what-input.js"></script>
+      <script src="../js/vendor/foundation.js"></script>
       <script src="../js/waypoints/lib/noframework.waypoints.min.js"></script>
       <script src="../js/d3/d3.min.js"></script>
-    	<script src="../js/app.js"></script>
+      <script src="../js/app.js"></script>
     
   	</body>
 </html>

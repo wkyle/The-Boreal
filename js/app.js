@@ -12,7 +12,6 @@ $(document).foundation()
 
 var electionsXML; 
 var geocoder;
-initMapBoxMap()
 
 
 
@@ -21,7 +20,7 @@ initMapBoxMap()
 //*****************************************************************
 
 
-function initialize() {
+function initializeMainPage() {
     createPageWaypoints()
     loadXML();
     geocoder = new google.maps.Geocoder();
@@ -30,7 +29,6 @@ function initialize() {
       componentRestrictions: {country: 'ca'}
     };
     autocomplete = new google.maps.places.Autocomplete(input, options);
-
 }
 
 
@@ -40,6 +38,40 @@ function initElectionCountdown() {
     todaysDate = new Date()
     var electionCountdownDays = Math.floor((nextElectionDate - todaysDate) / (1000*60*60*24))
     $("#election-countdown span").html(String(electionCountdownDays))    
+}
+
+function initializeProvincePage() {
+    createPageWaypoints()
+    loadXML();
+    geocoder = new google.maps.Geocoder();
+    var input = document.getElementById('address-input');
+    var options = {
+      componentRestrictions: {country: 'ca'}
+    };
+    autocomplete = new google.maps.places.Autocomplete(input, options);
+
+    var query = window.location.search;
+    if (query.substring(0, 1) == '?') {
+        query = query.substring(1);
+    }
+    var data = query.split(',');
+    for (i = 0; (i < data.length); i++) {
+        data[i] = decodeURI(data[i]);
+    }
+
+    console.log(data)
+
+}
+
+function initializeFEDPage() {
+    createPageWaypoints()
+    loadXML();
+    geocoder = new google.maps.Geocoder();
+    var input = document.getElementById('address-input');
+    var options = {
+      componentRestrictions: {country: 'ca'}
+    };
+    autocomplete = new google.maps.places.Autocomplete(input, options);
 }
 
 
@@ -104,7 +136,7 @@ $( ".postal-search-bar button" ).click(function() {
 
             if (Boolean(fedID)) {
                 var queryString = "?fedid=" + String(fedID)
-                var url = "./FEDs" + queryString
+                var url = encodeURI("./FEDs" + queryString)
                 window.location = url
             } else {
                 window.location = "#province-map"
@@ -136,7 +168,7 @@ $(document).ready(function(){
 function provinceClick(evt) {
     if (Boolean(electionsXML)){
         var queryString = "?province=" + evt.target.parentNode.getAttribute("id")
-        var url = "../provinces" + queryString
+        var url = encodeURI("../provinces" + queryString)
 
         window.location = url
     }
