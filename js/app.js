@@ -227,17 +227,18 @@ function getPhoto() {
 function initMapBoxMap(mapdata) {
     var mapBoxAccessToken = "sk.eyJ1Ijoid3JreWxlIiwiYSI6ImNpenp0am9rZTA0bGczM2xzdG41ODlrNXQifQ.d3sWSdM74ogzw6hdXkQTHw";
     var mymap = L.map('mapboxmap', {attributionControl: false}).setView([61, -95], 3.6);
+    var corner1 = L.latLng(mapdata["bbox"][1], mapdata["bbox"][0]);
+    var corner2 = L.latLng(mapdata["bbox"][3], mapdata["bbox"][2]);
+    var mapbounds = L.latLngBounds(corner1, corner2)
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: '',
         maxZoom: 18,
+        maxBounds: mapbounds,
         id: 'mapbox.light',
         accessToken: mapBoxAccessToken
     }).addTo(mymap);
-
-    var corner1 = L.latLng(mapdata["bbox"][1], mapdata["bbox"][0]);
-    var corner2 = L.latLng(mapdata["bbox"][3], mapdata["bbox"][2]);
-    L.geoJson(mapdata, {maxBounds: L.latLngBounds(corner1, corner2)}).addTo(mymap);
+    L.geoJson(mapdata).addTo(mymap);
 }
 
 
