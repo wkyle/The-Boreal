@@ -235,9 +235,9 @@ function initMapBoxMap(mapdata) {
         accessToken: mapBoxAccessToken
     }).addTo(mymap);
 
-var corner1 = L.latLng(mapdata["bbox"][1], mapdata["bbox"][0]);
-var corner2 = L.latLng(mapdata["bbox"][3], mapdata["bbox"][2]);
-    L.geoJson(mapdata, {maxBounds: L.latLngBounds(corner1, corner2);}).addTo(mymap);
+    var corner1 = L.latLng(mapdata["bbox"][1], mapdata["bbox"][0]);
+    var corner2 = L.latLng(mapdata["bbox"][3], mapdata["bbox"][2]);
+    L.geoJson(mapdata, {maxBounds: L.latLngBounds(corner1, corner2)}).addTo(mymap);
 }
 
 
