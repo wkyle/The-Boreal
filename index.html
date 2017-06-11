@@ -92,11 +92,65 @@
                       <p>Please update your browser and try again.</p>
                     </object>
                 </div>
-        	</div>
+        	
+
+            <div class="FED-snapshot-flex">
+              <div class="FED-titlebar-flex">
+                <p class="FED-province-abbrev">AB</p>
+                <p class="FED-name-flex"> Confederation Park</p>
+              </div>
+              <div class="FED-body-flex">
+                <div class="FED-photo-flex">
+                  <img class="FED-photo" src="img/MPProfiles/MaguireLarry_CPC.jpg">
+                </div>
+                <div class="FED-details-flex">
+                  <div class="FED-details">
+                    <p>MP</p>
+                    <p>Population</p>
+                    <p>Contact</p>
+                  </div>
+                </div>
+                <div class="FED-stats-flex">
+                  <div class="FED-competition">
+                    <p class="percentage">36%</p>
+                    <p>Competitiveness</p>
+                  </div>
+                  <div class="FED-turnout">
+                    <p class="percentage">24%</p>
+                    <p>Voter Turnout</p>
+                  </div>
+                  <div class="FED-race-result-chart">
+                    <p>BAR CHART</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div id="mapboxmap">
+              
+            </div>
+
+
+          </div>
       	</section>
 
 
 
+
+
+
+
+
+
+        <!-- Modal dialog for bad address -->
+        <div class="reveal" id="bad-address-popup" data-reveal>
+          <h1>Couldn't find your federal riding</h1>
+          <p>Find your riding with the map instead.</p>
+          <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
 
 
 
@@ -136,17 +190,24 @@
         </footer>
 
 
-      <script src="data/shitty-test.js"></script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTX-BLGDx5poEQG1-ar38rQcFSSE5sOa4&libraries=places"></script>
+      <!-- GEOJSON FILES -->
       <script src="data/shapefiles/CA-multiPart-simplified/CA-FED-map.js"></script>
+      <script src="data/shapefiles/NL/NL-multiPart-simplified.js"></script>
+
+      <!-- MAPPING -->
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTX-BLGDx5poEQG1-ar38rQcFSSE5sOa4&libraries=places"></script>
 		  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-    	<script src="js/vendor/jquery.js"></script>
+    	
+      <!-- PAGE FUNCTIONALITY -->
+      <script src="js/vendor/jquery.js"></script>
       <script src="js/vendor/jquery.color-2.1.2.min.js"></script>
     	<script src="js/vendor/what-input.js"></script>
     	<script src="js/vendor/foundation.js"></script>
       <script src="js/waypoints/lib/noframework.waypoints.min.js"></script>
       <script src="js/d3/d3.min.js"></script>
     	<script src="js/app.js"></script>
+
+
     
   	</body>
 </html>

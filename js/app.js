@@ -12,6 +12,7 @@ $(document).foundation()
 
 var electionsXML; 
 var geocoder;
+initMapBoxMap()
 
 
 
@@ -56,7 +57,7 @@ function createPageWaypoints() {
                 $("#top-tag").css({
                     "box-shadow": "none",
                     "border": "none",
-                    "background-image": "linear-gradient(#282828, #282828, #181818)"
+                    "background-image": "linear-gradient(#383838, #181818)"
                 });
                 $(".top-tag-text").css({
                     visibility: "hidden"
@@ -98,17 +99,30 @@ $( ".postal-search-bar button" ).click(function() {
   if (Boolean(string)) {
     var address = $("#address-input").val();
     geocoder.geocode( { 'address': address}, function(results, status) {
-      if (status == 'OK') {
-        var fedID = coord2FED([results[0].geometry.location.lng(), results[0].geometry.location.lat()], provincesGeo);
-        var queryString = "?fedid=" + String(fedID)
-        var url = "./FEDs" + queryString
+        if (status == 'OK') {
+            var fedID = coord2FED([results[0].geometry.location.lng(), results[0].geometry.location.lat()], provincesGeo);
 
-        window.location = url
+            if (Boolean(fedID)) {
+                var queryString = "?fedid=" + String(fedID)
+                var url = "./FEDs" + queryString
+                window.location = url
+            } else {
+                window.location = "#province-map"
+                callBadAddressPopup()
+            }
 
-      }
+        }
     });
 
   };
+});
+
+
+$(document).ready(function(){
+    $(".FED-titlebar-flex").click(function(e){
+        $(this).siblings(".FED-body-flex").toggle();
+        return;
+    });
 });
 
 
@@ -129,6 +143,50 @@ function provinceClick(evt) {
 };
 
 
+function callBadAddressPopup() {
+    $('#bad-address-popup').foundation('open');
+}
+
+
+
+
+
+//***********vvv   W   I   P   vvv********************
+
+function getBinnedOccupations(electionXML) {
+    var occupations = electionXML.getElementsByTagName("Occupation");
+    var set = new Set();
+    for (var i = occupations.length - 1; i >= 0; i--) {
+        set.add(occupations[i].childNodes[0].nodeValue);
+        console.log(occupations[i].childNodes[0].nodeValue)
+    };
+    console.log(set)
+    console.log(occupations.length)
+}
+
+//***********^^^   W   I   P   ^^^********************
+
+
+
+function filterGeoJSON(feature) {
+    var selectedProvince;
+    // if (feature.properties.PROVCODE === "ON")
+    return true
+}
+
+
+function getPhoto() {
+    var photos = electionsXML.getElementsByTagName("OfficialMPPhoto")
+    var container = document.getElementById("photos")
+    for (var i = photos.length - 1; i >= 0; i--) {
+        var img = document.createElement('img');
+        img.src = photos[i].childNodes[0].nodeValue
+        container.appendChild(img)
+    }
+}
+
+
+
 function initMapBoxMap() {
     var mapBoxAccessToken = "sk.eyJ1Ijoid3JreWxlIiwiYSI6ImNpenp0am9rZTA0bGczM2xzdG41ODlrNXQifQ.d3sWSdM74ogzw6hdXkQTHw";
     var mymap = L.map('mapboxmap', {attributionControl: false}).setView([61, -95], 3.6);
@@ -140,7 +198,7 @@ function initMapBoxMap() {
         accessToken: mapBoxAccessToken
     }).addTo(mymap);
 
-    L.geoJson(provincesGeo, {style: style}).addTo(mymap);
+    L.geoJson(NLGeo, {filter: filterGeoJSON}).addTo(mymap);
 }
 
 
@@ -158,6 +216,7 @@ function loadXML() {
 	xhttp.onreadystatechange = function() {
     	if (this.readyState == 4 && this.status == 200) {
             electionsXML = this.responseXML;
+            // getPhoto()
     	}
   	};
   	xhttp.open("GET", "data/FED2015.xml", true);

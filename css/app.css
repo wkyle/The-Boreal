@@ -10,7 +10,7 @@ GENERAL
   --red-b: #910000;
   --white-a: #FFFFFF;
   --white-b: #E0E0E0;
-  --dark-a: #282828;
+  --dark-a: #383838;
   --dark-b: #181818;
   --brown-a: #9b7c57;
   --brown-b: #73542f;
@@ -26,7 +26,7 @@ GENERAL
 	margin: 0 auto;
 }
 
-h1, h2, h3, h4, h5, h6, a {
+h1, h2, h3, h4, h5, h6, a, p {
 	font-family: 'Ubuntu';
 	word-break: initial;
 }
@@ -120,7 +120,7 @@ DESKTOP - NAV
 
 
 .nav-desktop, .top-bar {
-	background-image: linear-gradient(var(--dark-a), var(--dark-a), var(--dark-b));
+	background-image: linear-gradient(var(--dark-a), var(--dark-b));
 	height: 55px;
 	padding: 0px;
 	line-height: 55px;
@@ -338,6 +338,98 @@ HERO
 MAIN
 *************************************************************** */
 
+.FED-snapshot-flex {
+	display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.4) inset;
+    border-left: 1px solid rgba(.9,.9,.9,0.4);
+	border-top: 1px solid rgba(.9,.9,.9,0.4);
+	border-right: 1px solid rgba(0,0,0,0.5);
+	border-bottom:  1px solid rgba(0,0,0,0.5);
+	border-radius: 5px;
+	margin: 10px;
+}
+
+.FED-body-flex {
+	display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.FED-titlebar-flex {
+	display: -webkit-flex;
+    display: flex;
+    background-color: var(--green-a);
+    border-bottom: 10px solid var(--green-b);
+    cursor: pointer;
+}
+
+.FED-titlebar-flex:hover {
+	box-shadow: 0px -2px 5px -2px rgba(.5,0.5,0.5,.7) inset;
+	transition: all .1s ease;
+}
+
+.FED-province-abbrev {
+	color: var(--white-b);
+	font-size: 1.5em;
+	line-height: 1.5em;
+	margin: 0;
+	margin-left: 5px;
+	padding-right: 5px;
+	border-right: 1px solid var(--white-b);
+}
+
+.FED-name-flex {
+	color: var(--white-a);
+	font-size: 1em;
+	line-height: 1em;
+	margin: 0;
+	padding-top: 12px;
+	font-weight: bold;
+	letter-spacing: 4px;
+	margin-left: 5px;
+}
+
+.FED-photo-flex {
+	padding: 5px;
+}
+
+.FED-details-flex {
+	flex: 4;
+	padding: 10px;
+}
+
+.FED-details p {
+	font-size: 1em;
+	color: var(--dark-b);
+	margin-left: 10px;
+}
+
+.FED-stats-flex {
+	flex: 2;
+	text-align: center;
+	padding: 10px;
+}
+
+.FED-stats-flex .percentage {
+	font-size: 3em;
+	color: var(--dark-a);
+	font-weight: bold;
+	margin-bottom: 0px;
+	line-height: 1;
+}
+
+.FED-details {
+	display: -webkit-flex;
+    display: flex;
+    flex-direction: column;	
+}
+
+
+
 
 #province-map {
 	max-height: 90vh;
@@ -388,7 +480,10 @@ svg #NU:hover {
 
 
 
-
+#mapboxmap {
+	height: 300px;
+	width: 300px;
+}
 
 
 /* ***************************************************************

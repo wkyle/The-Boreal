@@ -77,9 +77,22 @@ def getFEDname(FEDid, FED_micro_data):
 
 
 def getFEDprovince(FEDid, FED_micro_data):
+    abbrevs = {"British Columbia" : "BC",
+               "Alberta" : "AB",
+               "Saskatchewan" : "SK",
+               "Manitoba" : "MB",
+               "Ontario" : "ON",
+               "Quebec" : "QC",
+               "New Brunswick" : "NB",
+               "Newfoundland and Labrador" : "NL",
+               "Nunavut" : "NU",
+               "Northwest Territories" : "NT",
+               "Yukon" : "YK",
+               "Nova Scotia" : "NS",
+               "Prince Edward Island" : "PE",}
     for dataline in FED_micro_data:
         if dataline[2] == FEDid:
-            return dataline[0]
+            return dataline[0], abbrevs[dataline[0]]
 
 
 def  getSeatAssignment(FEDid, FED_micro_data):
@@ -110,7 +123,8 @@ def mkTree(FED_macro_data, FED_micro_data):
         seat_assignment.text = getSeatAssignment(dataline[0], FED_micro_data)
 
         province = et.SubElement(FED, "Province")
-        province.text = getFEDprovince(dataline[0], FED_micro_data)
+        province.text, abbrev = getFEDprovince(dataline[0], FED_micro_data)
+        province.attrib ={"abbreviation" : abbrev}
 
         population = et.SubElement(FED, "Population")
         population.text = str(dataline[1])
