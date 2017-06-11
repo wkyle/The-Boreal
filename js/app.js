@@ -227,7 +227,7 @@ function getPhoto() {
 function initMapBoxMap(mapdata) {
     var mapBoxAccessToken = "sk.eyJ1Ijoid3JreWxlIiwiYSI6ImNpenp0am9rZTA0bGczM2xzdG41ODlrNXQifQ.d3sWSdM74ogzw6hdXkQTHw";
     var bbox = mapdata["bbox"]
-    var center = [bbox[3] - bbox[1], bbox[2] - bbox[0]]
+    var center = [(bbox[1] + bbox[3])/2, (bbox[0] + bbox[2])/2]
     var corner1 = L.latLng(bbox[1] - 0.1*(bbox[1] - center[0]), 
                            bbox[0] - 0.1*(bbox[0] - center[1]));
     var corner2 = L.latLng(bbox[3] + 0.1*(bbox[3] - center[0]), 
