@@ -63,8 +63,7 @@ function initializeProvincePage() {
     var mapdataURI = "../data/shapefiles/" + province + "/" + province + "-multiPart-simplified.json"
     d3.json(mapdataURI, function (er, mapdata) {
         initMapBoxMap(mapdata);
-        console.log(mapdataURI)
-        console.log(er)
+        console.log(mapdata.properties.bbox)
     });
 
 
@@ -128,6 +127,20 @@ function createPageWaypoints() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //*****************************************************************
 //   LISTENERS
 //*****************************************************************
@@ -167,6 +180,17 @@ $(document).ready(function(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 //*****************************************************************
 //   OTHER FUNCTIONS
 //*****************************************************************
@@ -187,31 +211,6 @@ function callBadAddressPopup() {
 }
 
 
-
-
-
-//***********vvv   W   I   P   vvv********************
-
-function getBinnedOccupations(electionXML) {
-    var occupations = electionXML.getElementsByTagName("Occupation");
-    var set = new Set();
-    for (var i = occupations.length - 1; i >= 0; i--) {
-        set.add(occupations[i].childNodes[0].nodeValue);
-        console.log(occupations[i].childNodes[0].nodeValue)
-    };
-    console.log(set)
-    console.log(occupations.length)
-}
-
-//***********^^^   W   I   P   ^^^********************
-
-
-
-function filterGeoJSON(feature) {
-    var selectedProvince;
-    // if (feature.properties.PROVCODE === "ON")
-    return true
-}
 
 
 function getPhoto() {
@@ -243,60 +242,6 @@ function initMapBoxMap(mapdata) {
 
 
 
-//I don't like loading all the map data at start
-//In future I want to async load only the requested province
-//when the page requests it
-function mapVariableFromName(name) {
-    switch(name) {
-        case "AB":
-            var ABGeo;
-            return ABGeo;
-        case "BC":
-            var BCGeo;
-            return BCGeo;
-        case "SK":
-            var SKGeo;
-            return SKGeo;
-        case "MB":
-            var MBGeo;
-            return MBGeo;
-        case "ON":
-            var ONGeo;
-            return ONGeo;
-        case "QC":
-            var QCGeo;
-            return QCGeo;
-        case "NB":
-            var NBGeo;
-            return NBGeo;
-        case "NS":
-            var NSGeo;
-            return NSGeo;
-        case "PE":
-            var PEGeo;
-            return PEGeo;
-        case "NL":
-            var NLGeo;
-            return NLGeo;
-        case "YT":
-            var YTGeo;
-            return YTGeo;
-        case "NT":
-            var NTGeo;
-            return NTGeo;
-        case "NU":
-            var NUGeo;
-            return NUGeo;
-    }
-}
-
-
-function seatMapClick(evt) {
-	var num = evt.target.id.substr(1);
-	var dataArray = new Array;
-	dataArray[130] = ["Justin", "Trudeau", "Liberal", [.2, .5, .3]];
-	
-}
 
 
 function loadXML() {
