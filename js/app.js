@@ -240,6 +240,8 @@ function initMapBoxMap(mapdata) {
     }).addTo(mymap);
     L.geoJson(mapdata).addTo(mymap);
     mymap.fitBounds(mapbounds)
+    console.log(corner1)
+    console.log(corner2)
 }
 
 
