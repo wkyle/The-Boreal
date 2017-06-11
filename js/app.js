@@ -253,7 +253,7 @@ function loadXML() {
             electionsXML = this.responseXML;
     	}
   	};
-  	xhttp.open("GET", "/data/FED2015.xml", true);
+  	xhttp.open("GET", "data/FED2015.xml", true);
   	xhttp.send();
 } 
 
