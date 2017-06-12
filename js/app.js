@@ -328,7 +328,7 @@ function createFEDListItem(fedid) {
     fedphotoflex.className = "FED-photo-flex";
     var fedphoto = document.createElement("img")
     fedphoto.className = "FED-photo";
-    fedphoto.attr("src", "/The-Boreal/img/MPProfiles/MaguireLarry_CPC.jpg");
+    fedphoto.src = "/The-Boreal/img/MPProfiles/MaguireLarry_CPC.jpg";
     fedphotoflex.append(fedphoto);
     fedbodyflex.append(fedphotoflex);
     fedsnapshotflex.append(fedbodyflex);
