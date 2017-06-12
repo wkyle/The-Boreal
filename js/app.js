@@ -152,13 +152,13 @@ function createPageWaypoints() {
 
 
 $( ".postal-search-bar button" ).click(function() {
-    
+
   var string = $(".postal-search-bar input").val();
   if (Boolean(string)) {
     var address = $("#address-input").val();
     geocoder.geocode( { 'address': address}, function(results, status) {
         if (status == 'OK') {
-            var fedID = coord2FED([results[0].geometry.location.lng(), results[0].geometry.location.lat()], provincesGeo);
+            var fedID = coord2FED([results[0].geometry.location.lng(), results[0].geometry.location.lat()]);
 
             if (Boolean(fedID)) {
                 var queryString = "?fedid=" + String(fedID);
@@ -296,15 +296,26 @@ function style(feature) {
 }
 
 
-function coord2FED (point, geojson) {
+function coord2FED (point) {
+    var provincelist = ["AB", "BC", "SK", "MB", "ON", "QC", "NB", "NS", "NL", "PE", "YT", "NT", "NU"]
     var fedID;
-    var features = geojson.features
-    features.forEach(function (f) {
-        if(d3.geoContains(f, point)) {
-            fedID = f.properties.FEDUID
-        }
-    });
-    return fedID
+
+    for (var i = provincelist.length - 1; i >= 0; i--) {
+        var mapdataURI = "../data/shapefiles/" + 
+                         provincelist[i] + "/" + 
+                         provincelist[i] + "-multiPart-simplified.json";
+        d3.json(mapdataURI, function (er, mapdata) {
+            var features = mapdata.features;
+            features.forEach(function (f) {
+                if(d3.geoContains(f, point)) {
+                    fedID = f.properties.FEDUID;
+                    console.log(fedID)
+                }
+            });
+            return fedID            
+        });
+    }
+
 }
 
 
