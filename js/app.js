@@ -308,6 +308,7 @@ function coord2FED (point, geojson) {
 
 
 function createFEDListItem(fedid, fedelement) {
+    var winningcandidate = getFEDWinner(fedid, fedelement)
     var fedlistcontainer = document.getElementById("list-of-FEDs");
     var fedsnapshotflex = document.createElement("div");
     fedsnapshotflex.className = "FED-snapshot-flex";
@@ -342,7 +343,7 @@ function createFEDListItem(fedid, fedelement) {
     feddetails.className = "FED-details";
     var fedmp = document.createElement("p");
     fedmp.className = "FED-mp";
-    fedmp.append(document.createTextNode(getFEDWinner(fedid, fedelement));
+    fedmp.append(document.createTextNode(winningcandidate.getElementsByTagName("CandidateName")[0].childNodes[0].nodeValue));
     var fedpopulation = document.createElement("p");
     fedpopulation.className = "FED-population";
 
@@ -408,4 +409,11 @@ function populateFEDList(electionsXML) {
 }
 
 
-function 
+function getFEDWinner(fedid, fedelement) {
+    var candidates = fedelelement.getElementsByTagName("Candidate");
+    for (var i = candidates.length - 1; i >= 0; i--) {
+        if (candidates[i].getElementsByTagName("Victor")[0].childNodes[0].nodeValue === "Yes") {
+            return candidates[i];
+        }
+    }
+}
