@@ -311,7 +311,7 @@ function coord2FED (point) {
                     fedID = f.properties.FEDUID;
                     console.log(fedID);
                 }
-            break;   
+            return;   
             });        
         });
     }
