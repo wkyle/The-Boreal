@@ -307,7 +307,7 @@ function coord2FED (point, geojson) {
 }
 
 
-function createFEDListItem(fedid) {
+function createFEDListItem(fedid, fedelement) {
     var fedlistcontainer = document.getElementById("list-of-FEDs");
     var fedsnapshotflex = document.createElement("div")
     fedsnapshotflex.className = "FED-snapshot-flex";
@@ -328,7 +328,7 @@ function createFEDListItem(fedid) {
     fedphotoflex.className = "FED-photo-flex";
     var fedphoto = document.createElement("img")
     fedphoto.className = "FED-photo";
-    fedphoto.src = "/The-Boreal/img/MPProfiles/MaguireLarry_CPC.jpg";
+    fedphoto.src = fedelement.getElementsByTagName["OfficialMPPhoto"].childNodes[0].nodeValue;
     fedphotoflex.append(fedphoto);
     fedbodyflex.append(fedphotoflex);
     fedsnapshotflex.append(fedbodyflex);
@@ -397,7 +397,7 @@ function populateFEDList(electionsXML) {
         var abbrev = fedlist[i].getElementsByTagName("Province")[0].getAttribute("abbreviation");
         if (abbrev === province) {
             var fedid = fedlist[i].getAttribute("id");
-            createFEDListItem(fedid);
+            createFEDListItem(fedid, fedlist[i]);
         }
     }
 }
