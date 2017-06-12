@@ -483,6 +483,7 @@ svg #NU:hover {
 #mapboxmap {
 	height: 300px;
 	width: 300px;
+	z-index: 0;
 }
 
 
