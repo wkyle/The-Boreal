@@ -384,7 +384,7 @@ function createFEDListItem(fedid) {
     fedbodyflex.append(fedstatsflex);
 
     fedsnapshotflex.append(fedbodyflex);
-
+    fedlistcontainer.append(fedsnapshotflex);
 
 }
 
