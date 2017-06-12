@@ -87,7 +87,7 @@ def getFEDprovince(FEDid, FED_micro_data):
                "Newfoundland and Labrador" : "NL",
                "Nunavut" : "NU",
                "Northwest Territories" : "NT",
-               "Yukon" : "YK",
+               "Yukon" : "YT",
                "Nova Scotia" : "NS",
                "Prince Edward Island" : "PE",}
     for dataline in FED_micro_data:

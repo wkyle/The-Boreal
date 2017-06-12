@@ -20733,7 +20733,7 @@
   <FED id="60001">
     <Name>Yukon</Name>
     <SeatAssignment>55</SeatAssignment>
-    <Province abbreviation="YK">Yukon</Province>
+    <Province abbreviation="YT">Yukon</Province>
     <Population>33897</Population>
     <PollingStations>82</PollingStations>
     <Electors>26879</Electors>
