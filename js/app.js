@@ -410,7 +410,7 @@ function populateFEDList(electionsXML) {
 
 
 function getFEDWinner(fedid, fedelement) {
-    var candidates = fedelelement.getElementsByTagName("Candidate");
+    var candidates = fedelement.getElementsByTagName("Candidate");
     for (var i = candidates.length - 1; i >= 0; i--) {
         if (candidates[i].getElementsByTagName("Victor")[0].childNodes[0].nodeValue === "Yes") {
             return candidates[i];
