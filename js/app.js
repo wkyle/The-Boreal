@@ -315,8 +315,10 @@ function createFEDListItem(fedid, fedelement) {
     fedtitlebarflex.className = "FED-titlebar-flex";
     var fedprovinceabbrev = document.createElement("p");
     fedprovinceabbrev.className = "FED-province-abbrev";
+    fedprovinceabbrev.append(document.createTextNode(fedelement.getElementsByTagName("Province")[0].getAttribute("abbreviation")));
     var fednameflex = document.createElement("p");
     fednameflex.className = "FED-name-flex";
+    fednameflex.append(document.createTextNode(fedelement.getElementsByTagName("Name")[0].childNodes[0].nodeValue);
     fedtitlebarflex.append(fedprovinceabbrev);
     fedtitlebarflex.append(fednameflex);
     fedsnapshotflex.append(fedtitlebarflex);
