@@ -328,7 +328,7 @@ function createFEDListItem(fedid, fedelement) {
     fedphotoflex.className = "FED-photo-flex";
     var fedphoto = document.createElement("img")
     fedphoto.className = "FED-photo";
-    fedphoto.src = fedelement.getElementsByTagName["OfficialMPPhoto"].childNodes[0].nodeValue;
+    fedphoto.src = fedelement.getElementsByTagName("OfficialMPPhoto").childNodes[0].nodeValue;
     fedphotoflex.append(fedphoto);
     fedbodyflex.append(fedphotoflex);
     fedsnapshotflex.append(fedbodyflex);
