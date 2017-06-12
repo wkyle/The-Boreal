@@ -152,6 +152,7 @@ function createPageWaypoints() {
 
 
 $( ".postal-search-bar button" ).click(function() {
+    
   var string = $(".postal-search-bar input").val();
   if (Boolean(string)) {
     var address = $("#address-input").val();
