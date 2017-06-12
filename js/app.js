@@ -70,7 +70,7 @@ function provinceFromQueryString() {
     var data = decodeURI(query);
 
     var province = data.slice(-2);    
-    return abbrev;
+    return province;
 }
 
 function initializeFEDPage() {
