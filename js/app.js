@@ -21,7 +21,7 @@ var geocoder;
 
 
 function initializeMainPage() {
-    createPageWaypoints()
+    createPageWaypoints();
     loadXML();
     geocoder = new google.maps.Geocoder();
     var input = document.getElementById('address-input');
@@ -33,18 +33,18 @@ function initializeMainPage() {
 
 
 function initElectionCountdown() {
-    var nextElectionDate = new Date(2019, 10, 21)
+    var nextElectionDate = new Date(2019, 10, 21);
     var todaysDate;
-    todaysDate = new Date()
-    var electionCountdownDays = Math.floor((nextElectionDate - todaysDate) / (1000*60*60*24))
-    $("#election-countdown span").html(String(electionCountdownDays))    
+    todaysDate = new Date();
+    var electionCountdownDays = Math.floor((nextElectionDate - todaysDate) / (1000*60*60*24));
+    $("#election-countdown span").html(String(electionCountdownDays));
 }
 
 function initializeProvincePage() {
-    createPageWaypoints()
-    initLocationSearchBar()
-    var province = provinceFromQueryString()
-    var mapdataURI = "../data/shapefiles/" + province + "/" + province + "-multiPart-simplified.json"
+    createPageWaypoints();
+    initLocationSearchBar();
+    var province = provinceFromQueryString();
+    var mapdataURI = "../data/shapefiles/" + province + "/" + province + "-multiPart-simplified.json";
     d3.json(mapdataURI, function (er, mapdata) {
         initMapBoxMap(mapdata);
     });
@@ -67,14 +67,14 @@ function provinceFromQueryString() {
     if (query.substring(0, 1) == '?') {
         query = query.substring(1);
     }
-    var data = decodeURI(query)
+    var data = decodeURI(query);
 
-    var province = data.slice(-2)    
-    return abbrev
+    var province = data.slice(-2);    
+    return abbrev;
 }
 
 function initializeFEDPage() {
-    createPageWaypoints()
+    createPageWaypoints();
     loadXML();
     geocoder = new google.maps.Geocoder();
     var input = document.getElementById('address-input');
@@ -125,9 +125,10 @@ function createPageWaypoints() {
                 $("#top-title").css({
                     "display": "none"
                 });
-            }};
-        }, offset: -80
-    })};
+            }}
+        }, offset: -80}
+    );
+}
 
 
 
@@ -151,7 +152,7 @@ function createPageWaypoints() {
 
 
 $( ".postal-search-bar button" ).click(function() {
-  var string = $(".postal-search-bar input").val()
+  var string = $(".postal-search-bar input").val();
   if (Boolean(string)) {
     var address = $("#address-input").val();
     geocoder.geocode( { 'address': address}, function(results, status) {
@@ -159,18 +160,18 @@ $( ".postal-search-bar button" ).click(function() {
             var fedID = coord2FED([results[0].geometry.location.lng(), results[0].geometry.location.lat()], provincesGeo);
 
             if (Boolean(fedID)) {
-                var queryString = "?fedid=" + String(fedID)
-                var url = encodeURI("./FEDs" + queryString)
-                window.location = url
+                var queryString = "?fedid=" + String(fedID);
+                var url = encodeURI("./FEDs" + queryString);
+                window.location = url;
             } else {
-                window.location = "#province-map"
-                callBadAddressPopup()
+                window.location = "#province-map";
+                callBadAddressPopup();
             }
 
         }
     });
 
-  };
+  }
 });
 
 
@@ -202,10 +203,10 @@ $(document).ready(function(){
 
 function provinceClick(evt) {
     if (Boolean(electionsXML)){
-        var queryString = "?province=" + evt.target.parentNode.getAttribute("id")
-        var url = encodeURI("../provinces" + queryString)
+        var queryString = "?province=" + evt.target.parentNode.getAttribute("id");
+        var url = encodeURI("../provinces" + queryString);
 
-        window.location = url
+        window.location = url;
     }
 };
 
@@ -218,12 +219,12 @@ function callBadAddressPopup() {
 
 
 function getPhoto() {
-    var photos = electionsXML.getElementsByTagName("OfficialMPPhoto")
-    var container = document.getElementById("photos")
+    var photos = electionsXML.getElementsByTagName("OfficialMPPhoto");
+    var container = document.getElementById("photos");
     for (var i = photos.length - 1; i >= 0; i--) {
         var img = document.createElement('img');
-        img.src = photos[i].childNodes[0].nodeValue
-        container.appendChild(img)
+        img.src = photos[i].childNodes[0].nodeValue;
+        container.appendChild(img);
     }
 }
 
@@ -231,11 +232,11 @@ function getPhoto() {
 
 function initMapBoxMap(mapdata) {
     var mapBoxAccessToken = "sk.eyJ1Ijoid3JreWxlIiwiYSI6ImNpenp0am9rZTA0bGczM2xzdG41ODlrNXQifQ.d3sWSdM74ogzw6hdXkQTHw";
-    var bbox = mapdata["bbox"]
-    var center = [(bbox[1] + bbox[3])/2, (bbox[0] + bbox[2])/2]
-    var corner1 = L.latLng(bbox[1], bbox[0])
-    var corner2 = L.latLng(bbox[3], bbox[2])
-    var mapbounds = L.latLngBounds(corner1, corner2).pad(0.005)
+    var bbox = mapdata["bbox"];
+    var center = [(bbox[1] + bbox[3])/2, (bbox[0] + bbox[2])/2];
+    var corner1 = L.latLng(bbox[1], bbox[0]);
+    var corner2 = L.latLng(bbox[3], bbox[2]);
+    var mapbounds = L.latLngBounds(corner1, corner2).pad(0.005);
 
     var mymap = L.map('mapboxmap', {attributionControl: false, zoomDelta: 0.2, zoomSnap: 0.1});
 
@@ -245,7 +246,7 @@ function initMapBoxMap(mapdata) {
         accessToken: mapBoxAccessToken
     }).addTo(mymap);
     L.geoJson(mapdata).addTo(mymap);
-    mymap.fitBounds(mapbounds)
+    mymap.fitBounds(mapbounds);
 }
 
 
@@ -257,6 +258,7 @@ function loadXML() {
 	xhttp.onreadystatechange = function() {
     	if (this.readyState == 4 && this.status == 200) {
             electionsXML = this.responseXML;
+            populateFEDList(electionsXML);
     	}
   	};
   	xhttp.open("GET", "/The-Boreal/data/FED2015.xml", true);
@@ -289,7 +291,7 @@ function style(feature) {
         color: 'white',
         dashArray: '2',
         fillOpacity: 0.5
-    };
+    }
 }
 
 
@@ -302,4 +304,79 @@ function coord2FED (point, geojson) {
         }
     });
     return fedID
+}
+
+
+function createFEDListItem(fedid) {
+    var fedlistcontainer = document.getElementById("list-of-FEDs");
+    var fedsnapshotflex = document.createElement("div").addClass("FED-snapshot-flex");
+    var fedtitlebarflex = document.createElement("div").addClass("FED-titlebar-flex");
+    var fedprovinceabbrev = document.createElement("p").addClass("FED-province-abbrev");
+    var fednameflex = document.createElement("p").addClass("FED-name-flex");
+    fedtitlebarflex.append(fedprovinceabbrev);
+    fedtitlebarflex.append(fednameflex);
+    fedsnapshotflex.append(fedtitlebarflex);
+
+
+    var fedbodyflex = document.createElement("div").addClass("FED-body-flex");
+    var fedphotoflex = document.createElement("div").addClass("FED-photo-flex");
+    var fedphoto = document.createElement("img").addClass("FED-photo");
+    fedphoto.attr("src", "/The-Boreal/img/MPProfiles/MaguireLarry_CPC.jpg");
+    fedphotoflex.append(fedphoto);
+    fedbodyflex.append(fedphotoflex);
+    fedsnapshotflex.append(fedbodyflex);
+
+
+    var feddetailsflex = document.createElement("div").addClass("FED-details-flex");
+    var feddetails = document.createElement("div").addClass("FED-details");
+    var fedmp = document.createElement("p").addClass("FED-mp");
+    var fedpopulation = document.createElement("p").addClass("FED-population");
+    var fedcontact = document.createElement("p").addClass("FED-contact");
+    feddetails.append(fedmp);
+    feddetails.append(fedpopulation);
+    feddetails.append(fedcontact);
+    feddetailsflex.append(feddetails);
+    fedbodyflex.append(feddetailsflex);
+
+
+    var fedstatsflex = document.createElement("div").addClass("FED-stats-flex");
+    var fedcompetition = document.createElement("div").addClass("FED-competition");
+    var fedcompetitionpercentage = document.createElement("p").addClass("FED-competition-percentage");
+    var fedcompetitionlabel = document.createElement("p").addClass("FED-competition-label");
+    fedcompetition.append(fedcompetitionpercentage);
+    fedcompetition.append(fedcompetitionlabel);
+    fedstatsflex.append(fedcompetition);
+
+
+    var fedturnout = document.createElement("div").addClass("FED-turnout");
+    var fedturnoutpercentage = document.createElement("p").addClass("FED-turnout-percentage");
+    var fedturnoutlabel = document.createElement("p").addClass("FED-turnout-label");
+    fedturnout.append(fedturnoutpercentage);
+    fedturnout.append(fedturnoutlabel);
+    fedstatsflex.append(fedturnout);
+
+
+    var fedraceresultchart = document.createElement("div").addClass("FED-race-result-chart");
+    var fedraceresultlabel = document.createElement("p").addClass("FED-race-result-label");
+    fedraceresultchart.append(fedraceresultlabel);
+    fedstatsflex.append(fedraceresultchart);
+    fedbodyflex.append(fedstatsflex);
+
+    fedsnapshotflex.append(fedbodyflex);
+
+
+}
+
+
+
+function populateFEDList(electionsXML) {
+    var province = provinceFromQueryString();
+    var fedlist = electionsXML.getElementsByTagName("FED");
+    for (var i = fedlist.length - 1; i >= 0; i--) {
+        var abbrev = fedlist[i].getElementsByTagName("Province")[0].getAttribute("abbreviation");
+        if (abbrev === province) {
+            var fedid = fedlist[i].getAttribute("id");
+            createFEDListItem(fedid);
+        }
+    }
 }
