@@ -318,7 +318,7 @@ function createFEDListItem(fedid, fedelement) {
     fedprovinceabbrev.append(document.createTextNode(fedelement.getElementsByTagName("Province")[0].getAttribute("abbreviation")));
     var fednameflex = document.createElement("p");
     fednameflex.className = "FED-name-flex";
-    fednameflex.append(document.createTextNode(fedelement.getElementsByTagName("Name")[0].childNodes[0].nodeValue);
+    fednameflex.append(document.createTextNode(fedelement.getElementsByTagName("Name")[0].childNodes[0].nodeValue));
     fedtitlebarflex.append(fedprovinceabbrev);
     fedtitlebarflex.append(fednameflex);
     fedsnapshotflex.append(fedtitlebarflex);
@@ -342,10 +342,13 @@ function createFEDListItem(fedid, fedelement) {
     feddetails.className = "FED-details";
     var fedmp = document.createElement("p");
     fedmp.className = "FED-mp";
+    fedmp.append(document.createTextNode(getFEDWinner(fedid, fedelement));
     var fedpopulation = document.createElement("p");
     fedpopulation.className = "FED-population";
+
     var fedcontact = document.createElement("p");
     fedcontact.className = "FED-contact";
+
     feddetails.append(fedmp);
     feddetails.append(fedpopulation);
     feddetails.append(fedcontact);
@@ -403,3 +406,6 @@ function populateFEDList(electionsXML) {
         }
     }
 }
+
+
+function 
