@@ -309,29 +309,41 @@ function coord2FED (point, geojson) {
 
 function createFEDListItem(fedid) {
     var fedlistcontainer = document.getElementById("list-of-FEDs");
-    var fedsnapshotflex = document.createElement("div").className("FED-snapshot-flex");
-    var fedtitlebarflex = document.createElement("div").className("FED-titlebar-flex");
-    var fedprovinceabbrev = document.createElement("p").className("FED-province-abbrev");
-    var fednameflex = document.createElement("p").className("FED-name-flex");
+    var fedsnapshotflex = document.createElement("div")
+    fedsnapshotflex.addClass("FED-snapshot-flex");
+    var fedtitlebarflex = document.createElement("div")
+    fedtitlebarflex.addClass("FED-titlebar-flex");
+    var fedprovinceabbrev = document.createElement("p")
+    fedprovinceabbrev.addClass("FED-province-abbrev");
+    var fednameflex = document.createElement("p")
+    fednameflex.addClass("FED-name-flex");
     fedtitlebarflex.append(fedprovinceabbrev);
     fedtitlebarflex.append(fednameflex);
     fedsnapshotflex.append(fedtitlebarflex);
 
 
-    var fedbodyflex = document.createElement("div").className("FED-body-flex");
-    var fedphotoflex = document.createElement("div").className("FED-photo-flex");
-    var fedphoto = document.createElement("img").className("FED-photo");
+    var fedbodyflex = document.createElement("div")
+    fedbodyflex.addClass("FED-body-flex");
+    var fedphotoflex = document.createElement("div")
+    fedphotoflex.addClass("FED-photo-flex");
+    var fedphoto = document.createElement("img")
+    fedphoto.addClass("FED-photo");
     fedphoto.attr("src", "/The-Boreal/img/MPProfiles/MaguireLarry_CPC.jpg");
     fedphotoflex.append(fedphoto);
     fedbodyflex.append(fedphotoflex);
     fedsnapshotflex.append(fedbodyflex);
 
 
-    var feddetailsflex = document.createElement("div").className("FED-details-flex");
-    var feddetails = document.createElement("div").className("FED-details");
-    var fedmp = document.createElement("p").className("FED-mp");
-    var fedpopulation = document.createElement("p").className("FED-population");
-    var fedcontact = document.createElement("p").className("FED-contact");
+    var feddetailsflex = document.createElement("div")
+    feddetailsflex.addClass("FED-details-flex");
+    var feddetails = document.createElement("div")
+    feddetails.addClass("FED-details");
+    var fedmp = document.createElement("p")
+    fedmp.addClass("FED-mp");
+    var fedpopulation = document.createElement("p")
+    fedpopulation.addClass("FED-population");
+    var fedcontact = document.createElement("p")
+    fedcontact.addClass("FED-contact");
     feddetails.append(fedmp);
     feddetails.append(fedpopulation);
     feddetails.append(fedcontact);
@@ -339,25 +351,34 @@ function createFEDListItem(fedid) {
     fedbodyflex.append(feddetailsflex);
 
 
-    var fedstatsflex = document.createElement("div").className("FED-stats-flex");
-    var fedcompetition = document.createElement("div").className("FED-competition");
-    var fedcompetitionpercentage = document.createElement("p").className("FED-competition-percentage");
-    var fedcompetitionlabel = document.createElement("p").className("FED-competition-label");
+    var fedstatsflex = document.createElement("div")
+    fedstatsflex.addClass("FED-stats-flex");
+    var fedcompetition = document.createElement("div")
+    fedcompetition.addClass("FED-competition");
+    var fedcompetitionpercentage = document.createElement("p")
+    fedcompetitionpercentage.addClass("FED-competition-percentage");
+    var fedcompetitionlabel = document.createElement("p")
+    fedcompetitionlabel.addClass("FED-competition-label");
     fedcompetition.append(fedcompetitionpercentage);
     fedcompetition.append(fedcompetitionlabel);
     fedstatsflex.append(fedcompetition);
 
 
-    var fedturnout = document.createElement("div").className("FED-turnout");
-    var fedturnoutpercentage = document.createElement("p").className("FED-turnout-percentage");
-    var fedturnoutlabel = document.createElement("p").className("FED-turnout-label");
+    var fedturnout = document.createElement("div")
+    fedturnout.addClass("FED-turnout");
+    var fedturnoutpercentage = document.createElement("p")
+    fedturnoutpercentage.addClass("FED-turnout-percentage");
+    var fedturnoutlabel = document.createElement("p")
+    fedturnoutlabel.addClass("FED-turnout-label");
     fedturnout.append(fedturnoutpercentage);
     fedturnout.append(fedturnoutlabel);
     fedstatsflex.append(fedturnout);
 
 
-    var fedraceresultchart = document.createElement("div").className("FED-race-result-chart");
-    var fedraceresultlabel = document.createElement("p").className("FED-race-result-label");
+    var fedraceresultchart = document.createElement("div")
+    fedraceresultchart.addClass("FED-race-result-chart");
+    var fedraceresultlabel = document.createElement("p")
+    fedraceresultlabel.addClass("FED-race-result-label");
     fedraceresultchart.append(fedraceresultlabel);
     fedstatsflex.append(fedraceresultchart);
     fedbodyflex.append(fedstatsflex);
