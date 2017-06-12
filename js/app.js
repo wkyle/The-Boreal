@@ -309,24 +309,24 @@ function coord2FED (point, geojson) {
 
 function createFEDListItem(fedid, fedelement) {
     var fedlistcontainer = document.getElementById("list-of-FEDs");
-    var fedsnapshotflex = document.createElement("div")
+    var fedsnapshotflex = document.createElement("div");
     fedsnapshotflex.className = "FED-snapshot-flex";
-    var fedtitlebarflex = document.createElement("div")
+    var fedtitlebarflex = document.createElement("div");
     fedtitlebarflex.className = "FED-titlebar-flex";
-    var fedprovinceabbrev = document.createElement("p")
+    var fedprovinceabbrev = document.createElement("p");
     fedprovinceabbrev.className = "FED-province-abbrev";
-    var fednameflex = document.createElement("p")
+    var fednameflex = document.createElement("p");
     fednameflex.className = "FED-name-flex";
     fedtitlebarflex.append(fedprovinceabbrev);
     fedtitlebarflex.append(fednameflex);
     fedsnapshotflex.append(fedtitlebarflex);
 
 
-    var fedbodyflex = document.createElement("div")
+    var fedbodyflex = document.createElement("div");
     fedbodyflex.className = "FED-body-flex";
-    var fedphotoflex = document.createElement("div")
+    var fedphotoflex = document.createElement("div");
     fedphotoflex.className = "FED-photo-flex";
-    var fedphoto = document.createElement("img")
+    var fedphoto = document.createElement("img");
     fedphoto.className = "FED-photo";
     fedphoto.src = fedelement.getElementsByTagName("OfficialMPPhoto")[0].childNodes[0].nodeValue;
     fedphotoflex.append(fedphoto);
@@ -334,15 +334,15 @@ function createFEDListItem(fedid, fedelement) {
     fedsnapshotflex.append(fedbodyflex);
 
 
-    var feddetailsflex = document.createElement("div")
+    var feddetailsflex = document.createElement("div");
     feddetailsflex.className = "FED-details-flex";
-    var feddetails = document.createElement("div")
+    var feddetails = document.createElement("div");
     feddetails.className = "FED-details";
-    var fedmp = document.createElement("p")
+    var fedmp = document.createElement("p");
     fedmp.className = "FED-mp";
-    var fedpopulation = document.createElement("p")
+    var fedpopulation = document.createElement("p");
     fedpopulation.className = "FED-population";
-    var fedcontact = document.createElement("p")
+    var fedcontact = document.createElement("p");
     fedcontact.className = "FED-contact";
     feddetails.append(fedmp);
     feddetails.append(fedpopulation);
@@ -351,33 +351,33 @@ function createFEDListItem(fedid, fedelement) {
     fedbodyflex.append(feddetailsflex);
 
 
-    var fedstatsflex = document.createElement("div")
+    var fedstatsflex = document.createElement("div");
     fedstatsflex.className = "FED-stats-flex";
-    var fedcompetition = document.createElement("div")
+    var fedcompetition = document.createElement("div");
     fedcompetition.className = "FED-competition";
-    var fedcompetitionpercentage = document.createElement("p")
+    var fedcompetitionpercentage = document.createElement("p");
     fedcompetitionpercentage.className = "FED-competition-percentage";
-    var fedcompetitionlabel = document.createElement("p")
+    var fedcompetitionlabel = document.createElement("p");
     fedcompetitionlabel.className = "FED-competition-label";
     fedcompetition.append(fedcompetitionpercentage);
     fedcompetition.append(fedcompetitionlabel);
     fedstatsflex.append(fedcompetition);
 
 
-    var fedturnout = document.createElement("div")
+    var fedturnout = document.createElement("div");
     fedturnout.className = "FED-turnout";
-    var fedturnoutpercentage = document.createElement("p")
+    var fedturnoutpercentage = document.createElement("p");
     fedturnoutpercentage.className = "FED-turnout-percentage";
-    var fedturnoutlabel = document.createElement("p")
+    var fedturnoutlabel = document.createElement("p");
     fedturnoutlabel.className = "FED-turnout-label";
     fedturnout.append(fedturnoutpercentage);
     fedturnout.append(fedturnoutlabel);
     fedstatsflex.append(fedturnout);
 
 
-    var fedraceresultchart = document.createElement("div")
+    var fedraceresultchart = document.createElement("div");
     fedraceresultchart.className = "FED-race-result-chart";
-    var fedraceresultlabel = document.createElement("p")
+    var fedraceresultlabel = document.createElement("p");
     fedraceresultlabel.className = "FED-race-result-label";
     fedraceresultchart.append(fedraceresultlabel);
     fedstatsflex.append(fedraceresultchart);
