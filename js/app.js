@@ -471,6 +471,9 @@ function createBarChart(svgid, data) {
         height = +svg.attr("height") - margin.top - margin.bottom,
         g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    console.log(width)
+    console.log(height)
+
     var x = d3.scaleLinear()
         .rangeRound([0, width]);
 
