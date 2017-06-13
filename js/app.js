@@ -453,12 +453,12 @@ function createFEDDetailsRow(id, label, data) {
     var datarowlabel = document.createElement("p");
     var datarowdata = document.createElement("p");
 
-    datarow.className("FED-data-row");
+    datarow.className = "FED-data-row";
     datarow.id = id;
-    datarowlabel.className("FED-data-row-label");
+    datarowlabel.className = "FED-data-row-label";
     datarowlabel.id = id + "-label";
     datarowlabel.innerHTML = String(label);
-    datarowdata.className("FED-data-row-data");
+    datarowdata.className = "FED-data-row-data";
     datarowdata.id = id + "data";
     datarowdata.innerHTML = String(data);
 
