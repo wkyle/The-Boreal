@@ -310,8 +310,8 @@ function coord2FED (point) {
                 if(d3.geoContains(f, point)) {
                     fedID = f.properties.FEDUID;
                     console.log(fedID);
+                    return;
                 }
-            return;   
             });        
         });
     }
