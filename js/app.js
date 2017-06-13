@@ -38,6 +38,7 @@ function initializeProvincePage() {
 
 
 $(document).ready(function(){
+    console.log(this);
     $(".FED-titlebar-flex").click(function(e){
         $(this).siblings(".FED-body-flex").toggle();
         console.log(this);
