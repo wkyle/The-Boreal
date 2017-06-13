@@ -39,10 +39,10 @@ function initializeProvincePage() {
 
 $(document).ready(function(){
     console.log(this);
-    $(".FED-titlebar-flex").click(function(e){
+    $(".FED-titlebar-flex").forEach(function() {
+        $(this).click(function(e){
         $(this).siblings(".FED-body-flex").toggle();
-        console.log(this);
-        return;
+    })
     });
 });
 }
