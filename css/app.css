@@ -408,6 +408,18 @@ MAIN
     flex-direction: column;	
 }
 
+.FED-data-row {
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: row;
+}
+
+.FED-data-row p {
+	font-size: 1em;
+	color: var(--dark-b);
+	margin-left: 10px;	
+}
+
 .FED-details p {
 	font-size: 1em;
 	color: var(--dark-b);
