@@ -419,6 +419,8 @@ MAIN
 	color: var(--dark-b);
 	margin-left: 10px;
 	font-weight: 600;
+	line-height: 1.2em;
+	margin-bottom: 0;
 }
 
 .FED-data-row p:first-child {
