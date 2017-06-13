@@ -352,13 +352,13 @@ function createFEDListItem(fedid, fedelement) {
     feddetails.className = "FED-details";
     var fedmplabel = document.createElement("p");
     fedmplabel.className = "FED-mp";
-    fedmplabel.append(document.createTextNode("MP");
+    fedmplabel.append(document.createTextNode("MP"));
     var fedmp = document.createElement("p");
     fedmp.className = "FED-mp";
     fedmp.append(document.createTextNode(winningcandidate.getElementsByTagName("CandidateName")[0].childNodes[0].nodeValue));
     var fedpopulationlabel = document.createElement("p");
     fedpopulationlabel.className = "FED-population";
-    fedpopulationlabel.append(document.createTextNode("Population");
+    fedpopulationlabel.append(document.createTextNode("Population"));
     var fedpopulation = document.createElement("p");
     fedpopulation.className = "FED-population";
     fedpopulation.append(document.createTextNode(fedelement.getElementsByTagName("Population")[0].childNodes[0].nodeValue));
