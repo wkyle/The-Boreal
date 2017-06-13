@@ -406,7 +406,7 @@ function createFEDListItem(fedid, fedelement) {
     var barchart = document.createElement("svg");
     barchart.id = "race-result-chart";
     fedraceresultchart.append(barchart);
-    createBarChart("race-result-chart", [.1,.1,.4,.25,.15])
+    createBarChart("#race-result-chart", [.1,.1,.4,.25,.15])
 
 }
 
@@ -459,7 +459,7 @@ function createFEDDetailsRow(id, label, data) {
 
 
 function createBarChart(svgid, data) {
-    var data = data; //d3.range(1000).map(d3.randomBates(10));
+    var data = d3.range(1000).map(d3.randomBates(10));
 
     var formatCount = d3.format(",.0f");
 
