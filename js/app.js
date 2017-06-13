@@ -310,7 +310,6 @@ function coord2FED (point) {
                 if(d3.geoContains(f, point)) {
                     fedID = f.properties.FEDUID;
                     console.log(fedID);
-                    return;
                 }
             });        
         });
@@ -358,10 +357,10 @@ function createFEDListItem(fedid, fedelement) {
     fedmp.append(document.createTextNode(winningcandidate.getElementsByTagName("CandidateName")[0].childNodes[0].nodeValue));
     var fedpopulation = document.createElement("p");
     fedpopulation.className = "FED-population";
-
-    var fedcontact = document.createElement("p");
-    fedcontact.className = "FED-contact";
-
+    fedpopulation.append(document.createTextNode(fedelement.getElementsByTagName("Population")[0].childNodes[0].nodeValue));
+    var fedelectors = document.createElement("p");
+    fedelectors.className = "FED-electors";
+    fedelectors.append(document.createTextNode(fedelement.getElementsByTagName("Electors")[0].childNodes[0].nodeValue));
     feddetails.append(fedmp);
     feddetails.append(fedpopulation);
     feddetails.append(fedcontact);
