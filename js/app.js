@@ -345,32 +345,42 @@ function createFEDListItem(fedid, fedelement) {
     fedbodyflex.append(fedphotoflex);
     fedsnapshotflex.append(fedbodyflex);
 
-
     var feddetailsflex = document.createElement("div");
     feddetailsflex.className = "FED-details-flex";
     var feddetails = document.createElement("div");
     feddetails.className = "FED-details";
-    var fedmplabel = document.createElement("p");
-    fedmplabel.className = "FED-mp";
-    fedmplabel.append(document.createTextNode("MP"));
-    var fedmp = document.createElement("p");
-    fedmp.className = "FED-mp";
-    fedmp.append(document.createTextNode(winningcandidate.getElementsByTagName("CandidateName")[0].childNodes[0].nodeValue));
-    var fedpopulationlabel = document.createElement("p");
-    fedpopulationlabel.className = "FED-population";
-    fedpopulationlabel.append(document.createTextNode("Population"));
-    var fedpopulation = document.createElement("p");
-    fedpopulation.className = "FED-population";
-    fedpopulation.append(document.createTextNode(fedelement.getElementsByTagName("Population")[0].childNodes[0].nodeValue));
-    var fedelectorslabel = document.createElement("p");
-    fedelectorslabel.className = "FED-electors";
-    fedelectorslabel.append(document.createTextNode("Eligible Voters"));
-    var fedelectors = document.createElement("p");
-    fedelectors.className = "FED-electors";
-    fedelectors.append(document.createTextNode(fedelement.getElementsByTagName("Electors")[0].childNodes[0].nodeValue));
-    feddetails.append(fedmplabel);
+
+
+
+    var fedmp = createFEDDetailsRow("mp", "MP", winningcandidate.getElementsByTagName("CandidateName")[0].childNodes[0].nodeValue);
+    var fedpopulation = createFEDDetailsRow("population", "Population", fedelement.getElementsByTagName("Population")[0].childNodes[0].nodeValue);
+    var fedelectors = createFEDDetailsRow("electors", "Electors", fedelement.getElementsByTagName("Electors")[0].childNodes[0].nodeValue);
+
+    // var fedmplabel = document.createElement("p");
+    // fedmplabel.className = "FED-mp";
+    // fedmplabel.append(document.createTextNode("MP"));
+    // var fedmp = document.createElement("p");
+    // fedmp.className = "FED-mp";
+    // fedmp.append(document.createTextNode(winningcandidate.getElementsByTagName("CandidateName")[0].childNodes[0].nodeValue));
+    // var fedpopulationlabel = document.createElement("p");
+    // fedpopulationlabel.className = "FED-population";
+    // fedpopulationlabel.append(document.createTextNode("Population"));
+    // var fedpopulation = document.createElement("p");
+    // fedpopulation.className = "FED-population";
+    // fedpopulation.append(document.createTextNode(fedelement.getElementsByTagName("Population")[0].childNodes[0].nodeValue));
+    // var fedelectorslabel = document.createElement("p");
+    // fedelectorslabel.className = "FED-electors";
+    // fedelectorslabel.append(document.createTextNode("Eligible Voters"));
+    // var fedelectors = document.createElement("p");
+    // fedelectors.className = "FED-electors";
+    // fedelectors.append(document.createTextNode(fedelement.getElementsByTagName("Electors")[0].childNodes[0].nodeValue));
+
+
+
+
+
+
     feddetails.append(fedmp);
-    feddetails.append(fedpopulationlabel);
     feddetails.append(fedpopulation);
     feddetails.append(fedelectors);
     feddetailsflex.append(feddetails);
@@ -436,4 +446,24 @@ function getFEDWinner(fedid, fedelement) {
             return candidates[i];
         }
     }
+}
+
+function createFEDDetailsRow(id, label, data) {
+    var datarow = document.createElement("div");
+    var datarowlabel = document.createElement("p");
+    var datarowdata = document.createElement("p");
+
+    datarow.className("FED-data-row");
+    datarow.id = id;
+    datarowlabel.className("FED-data-row-label");
+    datarowlabel.id = id + "-label";
+    datarowlabel.innerHTML = String(label);
+    datarowdata.className("FED-data-row-data");
+    datarowdata.id = id + "data";
+    datarowdata.innerHTML = String(data);
+
+    datarow.append(datarowlabel);
+    datarow.append(datarowdata);
+
+    return datarow;
 }

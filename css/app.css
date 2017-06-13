@@ -402,11 +402,13 @@ MAIN
 	padding: 10px;
 }
 
-.FED-details-flex p {
-	display: inline;
+.FED-details {
+	display: -webkit-flex;
+    display: flex;
+    flex-direction: column;	
 }
 
-.FED-details-flex p:first-child {
+.FED-details p {
 	font-size: 1em;
 	color: var(--dark-b);
 	margin-left: 10px;
@@ -426,11 +428,7 @@ MAIN
 	line-height: 1;
 }
 
-.FED-details {
-	display: -webkit-flex;
-    display: flex;
-    flex-direction: column;	
-}
+
 
 
 
