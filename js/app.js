@@ -406,8 +406,6 @@ function createFEDListItem(fedid, fedelement) {
     var barchart = document.createElement("svg");
     barchart.id = "race-result-chart";
     fedraceresultchart.append(barchart);
-    var width = document.createAttribute("width");
-    var height = document.createAttribute("height");
     barchart.setAttribute("width", "100px");
     barchart.setAttribute("height", "70px");  
     createBarChart("#race-result-chart", [.1,.1,.4,.25,.15])
