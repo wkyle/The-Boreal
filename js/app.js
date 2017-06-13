@@ -363,7 +363,7 @@ function createFEDListItem(fedid, fedelement) {
     fedelectors.append(document.createTextNode(fedelement.getElementsByTagName("Electors")[0].childNodes[0].nodeValue));
     feddetails.append(fedmp);
     feddetails.append(fedpopulation);
-    feddetails.append(fedcontact);
+    feddetails.append(fedelectors);
     feddetailsflex.append(feddetails);
     fedbodyflex.append(feddetailsflex);
 
