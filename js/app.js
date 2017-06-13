@@ -473,6 +473,7 @@ function createBarChart(svgid, data) {
 
     console.log(width)
     console.log(height)
+    console.log(data)
 
     var x = d3.scaleLinear()
         .rangeRound([0, width]);
