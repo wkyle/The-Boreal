@@ -356,6 +356,9 @@ function createFEDListItem(fedid, fedelement) {
     var fedmp = document.createElement("p");
     fedmp.className = "FED-mp";
     fedmp.append(document.createTextNode(winningcandidate.getElementsByTagName("CandidateName")[0].childNodes[0].nodeValue));
+    var fedpopulationlabel = document.createElement("p");
+    fedpopulationlabel.className = "FED-population";
+    fedpopulationlabel.append(document.createTextNode("Population");
     var fedpopulation = document.createElement("p");
     fedpopulation.className = "FED-population";
     fedpopulation.append(document.createTextNode(fedelement.getElementsByTagName("Population")[0].childNodes[0].nodeValue));
@@ -364,6 +367,7 @@ function createFEDListItem(fedid, fedelement) {
     fedelectors.append(document.createTextNode(fedelement.getElementsByTagName("Electors")[0].childNodes[0].nodeValue));
     feddetails.append(fedmplabel);
     feddetails.append(fedmp);
+    feddetails.append(fedpopulationlabel);
     feddetails.append(fedpopulation);
     feddetails.append(fedelectors);
     feddetailsflex.append(feddetails);
