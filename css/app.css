@@ -403,6 +403,10 @@ MAIN
 }
 
 .FED-details p {
+	display: inline;
+}
+
+.FED-details p:first-child {
 	font-size: 1em;
 	color: var(--dark-b);
 	margin-left: 10px;

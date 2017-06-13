@@ -35,16 +35,6 @@ function initializeProvincePage() {
         initMapBoxMap(mapdata);
     });
     loadXML();
-
-
-$(document).ready(function(){
-    console.log(this);
-    $(".FED-titlebar-flex").forEach(function() {
-        $(this).click(function(e){
-        $(this).siblings(".FED-body-flex").toggle();
-    })
-    });
-});
 }
 
 function initializeFEDPage() {
@@ -187,7 +177,6 @@ $( ".postal-search-bar button" ).click(function() {
 $(document).ready(function(){
     $(".FED-titlebar-flex").click(function(e){
         $(this).siblings(".FED-body-flex").toggle();
-        console.log(this);
         return;
     });
 });
@@ -361,6 +350,9 @@ function createFEDListItem(fedid, fedelement) {
     feddetailsflex.className = "FED-details-flex";
     var feddetails = document.createElement("div");
     feddetails.className = "FED-details";
+    var fedmplabel = document.createElement("p");
+    fedmplabel.className = "FED-mp";
+    fedmplabel.append(document.createTextNode("MP");
     var fedmp = document.createElement("p");
     fedmp.className = "FED-mp";
     fedmp.append(document.createTextNode(winningcandidate.getElementsByTagName("CandidateName")[0].childNodes[0].nodeValue));
@@ -371,6 +363,7 @@ function createFEDListItem(fedid, fedelement) {
     fedelectors.className = "FED-electors";
     fedelectors.append(document.createTextNode(fedelement.getElementsByTagName("Electors")[0].childNodes[0].nodeValue));
     feddetails.append(fedmp);
+    feddetails.append(fedmplabel);
     feddetails.append(fedpopulation);
     feddetails.append(fedelectors);
     feddetailsflex.append(feddetails);
