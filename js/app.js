@@ -408,10 +408,8 @@ function createFEDListItem(fedid, fedelement) {
     fedraceresultchart.append(barchart);
     var width = document.createAttribute("width");
     var height = document.createAttribute("height");
-    width.value = "100px";
-    height.value = "70px";
-    barchart.setAttributeNode(width);
-    barchart.setAttributeNode(height);  
+    barchart.setAttribute("width", "100px");
+    barchart.setAttribute("height", "70px");  
     createBarChart("#race-result-chart", [.1,.1,.4,.25,.15])
 
 }
