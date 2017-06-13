@@ -23,21 +23,7 @@ var geocoder;
 function initializeMainPage() {
     createPageWaypoints();
     loadXML();
-    geocoder = new google.maps.Geocoder();
-    var input = document.getElementById('address-input');
-    var options = {
-      componentRestrictions: {country: 'ca'}
-    };
-    autocomplete = new google.maps.places.Autocomplete(input, options);
-}
-
-
-function initElectionCountdown() {
-    var nextElectionDate = new Date(2019, 10, 21);
-    var todaysDate;
-    todaysDate = new Date();
-    var electionCountdownDays = Math.floor((nextElectionDate - todaysDate) / (1000*60*60*24));
-    $("#election-countdown span").html(String(electionCountdownDays));
+    initLocationSearchBar();
 }
 
 function initializeProvincePage() {
@@ -50,8 +36,31 @@ function initializeProvincePage() {
     });
     loadXML();
 
+
+$(document).ready(function(){
+    $(".FED-titlebar-flex").click(function(e){
+        $(this).siblings(".FED-body-flex").toggle();
+        console.log(this);
+        return;
+    });
+});
 }
 
+function initializeFEDPage() {
+    createPageWaypoints();
+    loadXML();
+    initLocationSearchBar();
+}
+
+
+
+function initElectionCountdown() {
+    var nextElectionDate = new Date(2019, 10, 21);
+    var todaysDate;
+    todaysDate = new Date();
+    var electionCountdownDays = Math.floor((nextElectionDate - todaysDate) / (1000*60*60*24));
+    $("#election-countdown span").html(String(electionCountdownDays));
+}
 
 function initLocationSearchBar() {
     geocoder = new google.maps.Geocoder();
@@ -68,20 +77,18 @@ function provinceFromQueryString() {
         query = query.substring(1);
     }
     var data = decodeURI(query);
-
     var province = data.slice(-2);    
     return province;
 }
 
-function initializeFEDPage() {
-    createPageWaypoints();
-    loadXML();
-    geocoder = new google.maps.Geocoder();
-    var input = document.getElementById('address-input');
-    var options = {
-      componentRestrictions: {country: 'ca'}
-    };
-    autocomplete = new google.maps.places.Autocomplete(input, options);
+function FEDFromQueryString() {
+    var query = window.location.search;
+    if (query.substring(0, 1) == '?') {
+        query = query.substring(1);
+    }
+    var data = decodeURI(query);
+    var FED = data.slice(-5);    
+    return FED;
 }
 
 
