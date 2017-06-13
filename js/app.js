@@ -356,25 +356,6 @@ function createFEDListItem(fedid, fedelement) {
     var fedpopulation = createFEDDetailsRow("population", "Population", fedelement.getElementsByTagName("Population")[0].childNodes[0].nodeValue);
     var fedelectors = createFEDDetailsRow("electors", "Electors", fedelement.getElementsByTagName("Electors")[0].childNodes[0].nodeValue);
 
-    // var fedmplabel = document.createElement("p");
-    // fedmplabel.className = "FED-mp";
-    // fedmplabel.append(document.createTextNode("MP"));
-    // var fedmp = document.createElement("p");
-    // fedmp.className = "FED-mp";
-    // fedmp.append(document.createTextNode(winningcandidate.getElementsByTagName("CandidateName")[0].childNodes[0].nodeValue));
-    // var fedpopulationlabel = document.createElement("p");
-    // fedpopulationlabel.className = "FED-population";
-    // fedpopulationlabel.append(document.createTextNode("Population"));
-    // var fedpopulation = document.createElement("p");
-    // fedpopulation.className = "FED-population";
-    // fedpopulation.append(document.createTextNode(fedelement.getElementsByTagName("Population")[0].childNodes[0].nodeValue));
-    // var fedelectorslabel = document.createElement("p");
-    // fedelectorslabel.className = "FED-electors";
-    // fedelectorslabel.append(document.createTextNode("Eligible Voters"));
-    // var fedelectors = document.createElement("p");
-    // fedelectors.className = "FED-electors";
-    // fedelectors.append(document.createTextNode(fedelement.getElementsByTagName("Electors")[0].childNodes[0].nodeValue));
-
 
 
 
