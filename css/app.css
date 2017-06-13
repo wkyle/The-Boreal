@@ -402,11 +402,11 @@ MAIN
 	padding: 10px;
 }
 
-.FED-details p {
+.FED-details-flex p {
 	display: inline;
 }
 
-.FED-details p:first-child {
+.FED-details-flex p:first-child {
 	font-size: 1em;
 	color: var(--dark-b);
 	margin-left: 10px;
