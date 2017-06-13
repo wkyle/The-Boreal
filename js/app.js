@@ -362,8 +362,8 @@ function createFEDListItem(fedid, fedelement) {
     var fedelectors = document.createElement("p");
     fedelectors.className = "FED-electors";
     fedelectors.append(document.createTextNode(fedelement.getElementsByTagName("Electors")[0].childNodes[0].nodeValue));
-    feddetails.append(fedmp);
     feddetails.append(fedmplabel);
+    feddetails.append(fedmp);
     feddetails.append(fedpopulation);
     feddetails.append(fedelectors);
     feddetailsflex.append(feddetails);
