@@ -459,7 +459,7 @@ function createFEDDetailsRow(id, label, data) {
 
 
 function createBarChart(svgid, data) {
-    var data = d3.range(1000).map(d3.randomBates(10));
+    var data = data; //d3.range(1000).map(d3.randomBates(10));
 
     var formatCount = d3.format(",.0f");
 
