@@ -179,6 +179,7 @@ $( ".postal-search-bar button" ).click(function() {
 $(document).ready(function(){
     $(".FED-titlebar-flex").click(function(e){
         $(this).siblings(".FED-body-flex").toggle();
+        console.log(this);
         return;
     });
 });
