@@ -403,12 +403,12 @@ function createFEDListItem(fedid, fedelement) {
     fedsnapshotflex.append(fedbodyflex);
     fedlistcontainer.append(fedsnapshotflex);
 
-    var barchart = document.createElement("svg");
-    barchart.id = "race-result-chart";
-    fedraceresultchart.append(barchart);
-    barchart.setAttribute("width", "960");
-    barchart.setAttribute("height", "500");  
-    createBarChart("#race-result-chart", [.1,.1,.4,.25,.15])
+    // var barchart = document.createElement("svg");
+    // barchart.id = "race-result-chart";
+    // fedraceresultchart.append(barchart);
+    // barchart.setAttribute("width", "960");
+    // barchart.setAttribute("height", "500-");  
+    createBarChart("#race-result-svg", [.1,.1,.4,.25,.15])
 
 }
 
