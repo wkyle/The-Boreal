@@ -418,14 +418,14 @@ MAIN
 	font-size: 1.2em;
 	color: var(--dark-b);
 	margin-left: 10px;
-	font-weight: bold;
+	font-weight: 340;
 }
 
 .FED-data-row p:first-child {
 	font-size: 1.2em;
 	color: var(--dark-a);
 	margin-left: 10px;
-	font-weight: bold;
+	font-weight: 600;
 }
 
 
