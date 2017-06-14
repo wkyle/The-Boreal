@@ -461,52 +461,31 @@ function createFEDDetailsRow(id, label, data) {
 
 
 function createBarChart(svgid, data) {
-    var data = d3.range(1000).map(d3.randomBates(10));
+    var data = data//[.2, .1, .05, .3, .15, .2];
 
-    var formatCount = d3.format(",.0f");
+    var width = 420,
+        barHeight = 20;
 
-    var svg = d3.select(svgid),
-        margin = {top: 10, right: 30, bottom: 30, left: 30},
-        width = +svg.attr("width") - margin.left - margin.right,
-        height = +svg.attr("height") - margin.top - margin.bottom,
-        g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    var x = d3.scale.linear()
+        .domain([0, d3.max(data)])
+        .range([0, width]);
 
-    console.log(width)
-    console.log(height)
-    console.log(data)
+    var chart = d3.select("svgid")
+        .attr("width", width)
+        .attr("height", barHeight * data.length);
 
-    var x = d3.scaleLinear()
-        .rangeRound([0, width]);
-
-    var bins = d3.histogram()
-        .domain(x.domain())
-        .thresholds(x.ticks(20))
-        (data);
-
-    var y = d3.scaleLinear()
-        .domain([0, d3.max(bins, function(d) { return d.length; })])
-        .range([height, 0]);
-
-    var bar = g.selectAll(".bar")
-      .data(bins)
+    var bar = chart.selectAll("g")
+        .data(data)
       .enter().append("g")
-        .attr("class", "bar")
-        .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; });
+        .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
 
     bar.append("rect")
-        .attr("x", 1)
-        .attr("width", x(bins[0].x1) - x(bins[0].x0) - 1)
-        .attr("height", function(d) { return height - y(d.length); });
+        .attr("width", x)
+        .attr("height", barHeight - 1);
 
     bar.append("text")
-        .attr("dy", ".75em")
-        .attr("y", 6)
-        .attr("x", (x(bins[0].x1) - x(bins[0].x0)) / 2)
-        .attr("text-anchor", "middle")
-        .text(function(d) { return formatCount(d.length); });
-
-    g.append("g")
-        .attr("class", "axis axis--x")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
+        .attr("x", function(d) { return x(d) - 3; })
+        .attr("y", barHeight / 2)
+        .attr("dy", ".35em")
+        .text(function(d) { return d; });
 }
