@@ -461,7 +461,7 @@ function createFEDDetailsRow(id, label, data) {
 
 
 function createBarChart(svgid, data) {
-    var data = data//[.2, .1, .05, .3, .15, .2];
+    var data = [2, 1, 5, 3, 10, 2];
 
     var width = 420,
         barHeight = 20;
