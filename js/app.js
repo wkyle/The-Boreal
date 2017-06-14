@@ -466,7 +466,7 @@ function createBarChart(svgid, data) {
     var width = 420,
         barHeight = 20;
 
-    var x = d3.scale.linear()
+    var x = d3.scaleLinear()
         .domain([0, d3.max(data)])
         .range([0, width]);
 
