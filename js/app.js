@@ -204,7 +204,6 @@ function provinceClick(evt) {
     if (Boolean(electionsXML)){
         var queryString = "?province=" + evt.target.parentNode.getAttribute("id");
         var url = encodeURI("../provinces" + queryString);
-
         window.location = url;
     }
 };
@@ -260,7 +259,7 @@ function loadXML() {
             populateFEDList(electionsXML);
     	}
   	};
-  	xhttp.open("GET", "/The-Boreal/data/FED2015.xml", true);
+  	xhttp.open("GET", "/data/FED2015.xml", true);
   	xhttp.send();
 } 
 
@@ -317,101 +316,65 @@ function coord2FED (point) {
 
 
 function createFEDListItem(fedid, fedelement) {
-    var winningcandidate = getFEDWinner(fedid, fedelement)
-    var fedlistcontainer = document.getElementById("list-of-FEDs");
-    var fedsnapshotflex = document.createElement("div");
-    fedsnapshotflex.className = "FED-snapshot-flex";
-    var fedtitlebarflex = document.createElement("div");
-    fedtitlebarflex.className = "FED-titlebar-flex";
-    var fedprovinceabbrev = document.createElement("p");
-    fedprovinceabbrev.className = "FED-province-abbrev";
-    fedprovinceabbrev.append(document.createTextNode(fedelement.getElementsByTagName("Province")[0].getAttribute("abbreviation")));
-    var fednameflex = document.createElement("p");
-    fednameflex.className = "FED-name-flex";
-    fednameflex.append(document.createTextNode(fedelement.getElementsByTagName("Name")[0].childNodes[0].nodeValue));
-    fedtitlebarflex.append(fedprovinceabbrev);
-    fedtitlebarflex.append(fednameflex);
-    fedsnapshotflex.append(fedtitlebarflex);
+    var winningcandidate = getFEDWinner(fedid, fedelement);
 
 
-    var fedbodyflex = document.createElement("div");
-    fedbodyflex.className = "FED-body-flex";
-    var fedphotoflex = document.createElement("div");
-    fedphotoflex.className = "FED-photo-flex";
-    var fedphoto = document.createElement("img");
-    fedphoto.className = "FED-photo";
-    fedphoto.src = fedelement.getElementsByTagName("OfficialMPPhoto")[0].childNodes[0].nodeValue;
-    fedphotoflex.append(fedphoto);
-    fedbodyflex.append(fedphotoflex);
-    fedsnapshotflex.append(fedbodyflex);
-
-    var feddetailsflex = document.createElement("div");
-    feddetailsflex.className = "FED-details-flex";
-    var feddetails = document.createElement("div");
-    feddetails.className = "FED-details";
-
+    var fedsnapshotflex = d3.select("#list-of-FEDs").append("div").classed("FED-snapshot-flex", true);
+    var fedtitlebarflex = fedsnapshotflex.append("div").classed("FED-titlebar-flex", true);
+    var fedbodyflex = fedsnapshotflex.append("div").classed("FED-body-flex", true);
+    var fedprovinceabbrev = fedtitlebarflex.append("p").classed("FED-province-abbrev", true).html(fedelement.getElementsByTagName("Province")[0].getAttribute("abbreviation"));
+    var fedname = fedtitlebarflex.append("p").classed("FED-name", true).html(fedelement.getElementsByTagName("Name")[0].childNodes[0].nodeValue);
+    var fedphotoflex = fedbodyflex.append("div").classed("FED-photo-flex", true);
+    fedphotoflex.append("img").attr("src", fedelement.getElementsByTagName("OfficialMPPhoto")[0].childNodes[0].nodeValue);
+    var feddetailsflex = fedbodyflex.append("div").classed("FED-details-flex", true);
+    var fedresultsflex = fedbodyflex.append("div").classed("FED-results-flex", true);
+    var fedstatsflex = fedbodyflex.append("div").classed("FED-stats-flex", true);
 
 
     var fedmp = createFEDDetailsRow("mp", "MP", winningcandidate.getElementsByTagName("CandidateName")[0].childNodes[0].nodeValue);
     var fedpopulation = createFEDDetailsRow("population", "Population", fedelement.getElementsByTagName("Population")[0].childNodes[0].nodeValue);
     var fedelectors = createFEDDetailsRow("electors", "Electors", fedelement.getElementsByTagName("Electors")[0].childNodes[0].nodeValue);
+    feddetailsflex.append(function() {return fedmp});
+    feddetailsflex.append(function() {return fedpopulation});
+    feddetailsflex.append(function() {return fedelectors});
+
+
+    var raceresultdata = getRaceResultData(fedelement);
+    var candidateinfo = fedresultsflex.append("div").classed("candidate-info", true);
+    var raceresultsvg = fedresultsflex.append("svg");
 
 
 
 
 
-
-    feddetails.append(fedmp);
-    feddetails.append(fedpopulation);
-    feddetails.append(fedelectors);
-    feddetailsflex.append(feddetails);
-    fedbodyflex.append(feddetailsflex);
+    var fedturnout = fedstatsflex.append("div").classed("FED-turnout", true);
+    var fedturnoutpercentage = fedturnout.append("p").classed("FED-stats-percentage", true).html(fedelement.getElementsByTagName("Turnout")[0].childNodes[0].nodeValue);
+    var fedturnoutlabel = fedturnout.append("p").classed("FED-stats-label", true).html("TURNOUT");
 
 
-    var fedstatsflex = document.createElement("div");
-    fedstatsflex.className = "FED-stats-flex";
-    var fedcompetition = document.createElement("div");
-    fedcompetition.className = "FED-competition";
-    var fedcompetitionpercentage = document.createElement("p");
-    fedcompetitionpercentage.className = "FED-competition-percentage";
-    var fedcompetitionlabel = document.createElement("p");
-    fedcompetitionlabel.className = "FED-competition-label";
-    fedcompetition.append(fedcompetitionpercentage);
-    fedcompetition.append(fedcompetitionlabel);
-    fedstatsflex.append(fedcompetition);
+    var fedcompetition = fedstatsflex.append("div").classed("FED-competition", true);
+    var fedcompetitionpercentage = fedcompetition.append("p").classed("FED-stats-percentage", true).html(fedelement.getElementsByTagName("Competitiveness")[0].childNodes[0].nodeValue.slice(0,4));
+    var fedcompetitionlabel = fedcompetition.append("p").classed("FED-stats-label", true).html("COMPETITIVENESS");
 
 
-    var fedturnout = document.createElement("div");
-    fedturnout.className = "FED-turnout";
-    var fedturnoutpercentage = document.createElement("p");
-    fedturnoutpercentage.className = "FED-turnout-percentage";
-    var fedturnoutlabel = document.createElement("p");
-    fedturnoutlabel.className = "FED-turnout-label";
-    fedturnout.append(fedturnoutpercentage);
-    fedturnout.append(fedturnoutlabel);
-    fedstatsflex.append(fedturnout);
 
 
-    var fedraceresultchart = document.createElement("div");
-    fedraceresultchart.className = "FED-race-result-chart";
-    var fedraceresultlabel = document.createElement("p");
-    fedraceresultlabel.className = "FED-race-result-label";
-    fedraceresultchart.append(fedraceresultlabel);
-    fedstatsflex.append(fedraceresultchart);
-    fedbodyflex.append(fedstatsflex);
 
-    fedsnapshotflex.append(fedbodyflex);
-    fedlistcontainer.append(fedsnapshotflex);
-
-    // var barchart = document.createElement("svg");
-    // barchart.id = "race-result-chart";
-    // fedraceresultchart.append(barchart);
-    // barchart.setAttribute("width", "960");
-    // barchart.setAttribute("height", "500-");  
-    createBarChart("#race-result-svg", [.1,.1,.4,.25,.15])
-
+    createBarChart(raceresultsvg, raceresultdata);
 }
 
+//MAKE THIS AN OBJECT JSON WITH D.NAME, D.VOTE, D.OCCUPATION, D.AFFILIATION
+function getRaceResultData(fedelement) {
+    var candidates = fedelement.getElementsByTagName("Candidate");
+    var data = [];
+    for (var i = candidates.length - 1; i >= 0; i--) {
+        data.push({name: candidates[i].getElementsByTagName("CandidateName")[0].childNodes[0].nodeValue,
+                   vote: parseFloat(candidates[i].getElementsByTagName("PercentOfVote")[0].childNodes[0].nodeValue),
+                   occupation: candidates[i].getElementsByTagName("Occupation")[0].childNodes[0].nodeValue,
+                   affiliation: candidates[i].getElementsByTagName("CandidateAffiliation")[0].childNodes[0].nodeValue});
+    }
+    return data;
+}
 
 
 function populateFEDList(electionsXML) {
@@ -460,32 +423,21 @@ function createFEDDetailsRow(id, label, data) {
 
 
 
-function createBarChart(svgid, data) {
-    var data = [2, 1, 5, 3, 10, 2];
+function createBarChart(svg, data) {
+    var w = 200;
+    var h = 120;
+    var barpadding = 2;
 
-    var width = 420,
-        barHeight = 20;
-
-    var x = d3.scaleLinear()
-        .domain([0, d3.max(data)])
-        .range([0, width]);
-
-    var chart = d3.select("svgid")
-        .attr("width", width)
-        .attr("height", barHeight * data.length);
-
-    var bar = chart.selectAll("g")
-        .data(data)
-      .enter().append("g")
-        .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
-
-    bar.append("rect")
-        .attr("width", x)
-        .attr("height", barHeight - 1);
-
-    bar.append("text")
-        .attr("x", function(d) { return x(d) - 3; })
-        .attr("y", barHeight / 2)
-        .attr("dy", ".35em")
-        .text(function(d) { return d; });
+    svg.attr("width", w).attr("height", h)
+    svg.selectAll("rect")
+       .data(data)
+       .enter()
+       .append("rect")
+       .attr("x", function(d, i) {return i * (w / data.length - barpadding)})
+       .attr("y", function(d) {return h - d.vote})
+       .attr("width", w / data.length - barpadding)
+       .attr("height", function(d, i) {return d.vote/100 * h})
 }
+
+
+

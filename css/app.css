@@ -382,7 +382,7 @@ MAIN
 	border-right: 1px solid var(--white-b);
 }
 
-.FED-name-flex {
+.FED-name {
 	color: var(--white-a);
 	font-size: 1em;
 	line-height: 1em;
@@ -393,20 +393,19 @@ MAIN
 	margin-left: 5px;
 }
 
-.FED-photo-flex {
-	padding: 5px;
+.FED-photo-flex img{
+	padding: 10px;
+	border-radius: 14px;
 }
 
 .FED-details-flex {
-	flex: 4;
-	padding: 10px;
-}
-
-.FED-details {
 	display: -webkit-flex;
     display: flex;
-    flex-direction: column;	
+	padding: 10px;
+	flex-direction: column;
 }
+
+
 
 .FED-data-row {
 	display: -webkit-flex;
@@ -423,7 +422,7 @@ MAIN
 	margin-bottom: 0;
 }
 
-.FED-data-row p:first-child {
+.FED-data-row p:first-child, .FED-stats-label {
 	font-size: 1.2em;
 	color: var(--dark-a);
 	margin-left: 10px;
