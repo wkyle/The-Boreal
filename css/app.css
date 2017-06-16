@@ -446,7 +446,9 @@ MAIN
 }
 
 
-
+svg .histo-bar {
+	margin-left: 2px;
+}
 
 
 
