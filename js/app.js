@@ -9,7 +9,7 @@ $(document).foundation()
 //   PAGE GLOBAL VARIABLES
 //*******************************************************************************************
 
-var siteroot = "";
+var siteroot = "The-Boreal";
 var electionsXML;
 var geocoder;
 
