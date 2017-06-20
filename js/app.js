@@ -9,10 +9,14 @@ $(document).foundation()
 //   PAGE GLOBAL VARIABLES
 //*******************************************************************************************
 
-var siteroot = "/The-Boreal";
+var siteroot = "/The-Boreal";//"/The-Boreal";
 var electionsXML;
 var geocoder;
-
+var mapGeoJson;
+var provinceMap;
+var mapTileLayer;
+var mapInfo;
+var zoomedToFeature = {bool: false, feature: null};
 
 
 //*******************************************************************************************
@@ -31,6 +35,7 @@ function initializeProvincePage() {
     createPageWaypoints();
     initLocationSearchBar();
     var province = queryStringObject().province;
+    $("#name-of-province").html(provinceNameExpand(province));
     var mapdataURI = siteroot + "/data/shapefiles/" + province + "/" + province + "-multiPart-simplified.json";
     d3.json(mapdataURI, function (er, mapdata) {
         initMapBoxMap(mapdata);
@@ -69,7 +74,7 @@ function initLocationSearchBar() {
 
 
 function createPageWaypoints() {
-    var waypoint = new Waypoint({
+    var navwaypoint = new Waypoint({
       element: document.getElementsByTagName('body')[0],
       handler: function(direction) {
         if (Waypoint.viewportWidth() > 815) {
@@ -90,6 +95,7 @@ function createPageWaypoints() {
                 $("#top-title").css({
                     "display": "inline"
                 });
+                $("#top-search-bar").css({display: "inline"})
 
             } else {
 
@@ -108,8 +114,9 @@ function createPageWaypoints() {
                 $("#top-title").css({
                     "display": "none"
                 });
+                $("#top-search-bar").css({display: "none"})
             }}
-        }, offset: -80}
+        }, offset: -300}
     );
 }
 
@@ -254,6 +261,23 @@ function queryStringObject() {
 }
 
 
+function provinceNameExpand(abbrev) {
+    var dict = {"BC": "British Columbia",
+                "AB": "Alberta",
+                "SK": "Saskatchewan",
+                "MB": "Manitoba",
+                "ON": "Ontario",
+                "QC": "Quebec",
+                "PE": "Prince Edward Island",
+                "NS": "Nova Scotia",
+                "NL": "Newfoundland and Labrador",
+                "NB": "New Brunswick",
+                "NT": "Northwest Territories",
+                "NU": "Nunavut",
+                "YT": "Yukon"}
+    return dict[abbrev];
+}
+
 
 
 //*******************************************************************************************
@@ -297,16 +321,32 @@ function initMapBoxMap(mapdata) {
     var corner2 = L.latLng(bbox[3], bbox[2]);
     var mapbounds = L.latLngBounds(corner1, corner2).pad(0.005);
 
-    var mymap = L.map('mapboxmap', {attributionControl: false, zoomDelta: 0.2, zoomSnap: 0.1});
+    provinceMap = L.map('mapboxmap', {attributionControl: false, zoomDelta: 0.2, zoomSnap: 0.1});
 
-    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    mapTileLayer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: '',
         id: 'mapbox.light',
         accessToken: mapBoxAccessToken
-    }).addTo(mymap);
-    L.geoJson(mapdata).addTo(mymap);
-    mymap.fitBounds(mapbounds);
+    }).addTo(provinceMap);
+    mapGeoJson = L.geoJson(mapdata, {style: mapStyle,
+                        onEachFeature: onEachFeature}).addTo(provinceMap);
+    provinceMap.fitBounds(mapbounds);
+
+
+    mapInfo = L.control();
+    mapInfo.onAdd = function (map) {
+        this._div = L.DomUtil.create('div', 'map-info'); // create a div with a class "info"
+        this.update();
+        return this._div;
+    };
+    // method that we will use to update the control based on feature properties passed
+    mapInfo.update = function (props) {
+        this._div.innerHTML = (props ? props.FEDNAME : 'Hover over a province');
+    };
+    mapInfo.addTo(provinceMap);
 }
+
+
 
 
 
@@ -318,6 +358,9 @@ function loadXML() {
     	if (this.readyState == 4 && this.status == 200) {
             electionsXML = this.responseXML;
             populateFEDList(electionsXML);
+            if(window.location.href.indexOf("provinces") > -1) {
+                populateProvincePageData(electionsXML);
+            }
     	}
   	};
   	xhttp.open("GET", siteroot + "/data/FED2015.xml", true);
@@ -332,17 +375,6 @@ function loadXML() {
 
 
 
-//FOR LEAFLET MAP STYLE OPTION
-function style(feature) {
-    return {
-        fillColor: getColorBlue(feature.properties.area),
-        weight: 1.5,
-        opacity: 1,
-        color: 'white',
-        dashArray: '2',
-        fillOpacity: 0.5
-    }
-}
 
 
 function coord2FED (point) {
@@ -367,25 +399,6 @@ function coord2FED (point) {
                     break featureloop;
                 }
             }
-
-
-
-            // features.forEach(function (f) {
-            //     if(d3.geoContains(f, point)) {
-            //         fedID = f.properties.FEDUID;
-            //         break;
-            //     }
-            // });
-            // if (Boolean(fedID)) {
-            //     var queryString = "?fedid=" + String(fedID);
-            //     var url = encodeURI(siteroot + "/FEDs" + queryString);
-            //     window.location = url;
-            //     return;
-            // } else {
-            //     window.location = siteroot + "/#province-map";
-            //     callBadAddressPopup();
-            //     return;
-            // }
             return;   
         });
     }
@@ -469,6 +482,11 @@ function populateFEDList(electionsXML) {
 }
 
 
+function populateProvincePageData(electionsXML) {
+    console.log("populating");
+}
+
+
 function getFEDWinner(fedid, fedelement) {
     var candidates = fedelement.getElementsByTagName("Candidate");
     for (var i = candidates.length - 1; i >= 0; i--) {
@@ -540,3 +558,67 @@ function updateCandidateInfo(d) {
     candinfo.select("#cand-occupation-data").html(d.occupation);
 }
 
+
+
+//*******************************************************************************************
+//   FUNCTIONS AND OPTIONS FOR LEAFLET MAP
+//*******************************************************************************************
+
+
+function mapStyle(feature) {
+    return {
+        fillColor: getRandomColor("brown", .7),
+        weight: 1.5,
+        opacity: 1,
+        color: 'white',
+        dashArray: '2',
+        fillOpacity: 0.5
+    }
+}
+
+
+function mapFeatureMousover(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 3,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+    mapInfo.update(layer.feature.properties);
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
+}
+
+
+function mapFeatureMouseout(e) {
+    mapGeoJson.resetStyle(e.target);
+    mapInfo.update();
+}
+
+function mapFeatureClick(e) {
+    if (e.target === zoomedToFeature.feature) {
+        zoomedToFeature.bool = false;
+        zoomedToFeature.feature = null;
+        var fedID = e.target.feature.properties.FEDUID;
+        var queryString = "?fedid=" + String(fedID);
+        var url = encodeURI(siteroot + "/FEDs" + queryString);
+        window.location = url;
+    } else {
+        zoomedToFeature.bool = true;
+        zoomedToFeature.feature = e.target;
+        provinceMap.fitBounds(e.target.getBounds());
+    }
+}
+
+
+function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: mapFeatureMousover,
+        mouseout: mapFeatureMouseout,
+        click: mapFeatureClick
+    });
+}
