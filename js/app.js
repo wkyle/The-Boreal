@@ -9,6 +9,8 @@ $(document).foundation()
 //   PAGE GLOBAL VARIABLES
 //*******************************************************************************************
 
+//IF POSSIBLE, I WANT TO REPLACE THIS GLOBAL STUFF WITH CLOSURES IN THE FUTURE
+
 var siteroot = "/The-Boreal";//"/The-Boreal";
 var electionsXML;
 var geocoder;
@@ -19,9 +21,17 @@ var mapInfo;
 var zoomedToFeature = {bool: false, feature: null};
 
 
+
+
+
+
+
+
+
 //*******************************************************************************************
 //   PAGE INITIALIZATION
 //*******************************************************************************************
+
 
 
 function initializeMainPage() {
@@ -30,6 +40,8 @@ function initializeMainPage() {
     initLocationSearchBar();
     initElectionCountdown()
 }
+
+
 
 function initializeProvincePage() {
     createPageWaypoints();
@@ -43,6 +55,8 @@ function initializeProvincePage() {
     initElectionCountdown()
     loadXML();
 }
+
+
 
 function initializeFEDPage() {
     var fedID = queryStringObject().fed;
@@ -61,6 +75,8 @@ function initElectionCountdown() {
     var electionCountdownDays = Math.floor((nextElectionDate - todaysDate) / (1000*60*60*24));
     $("#election-countdown span").html(String(electionCountdownDays));
 }
+
+
 
 function initLocationSearchBar() {
     geocoder = new google.maps.Geocoder();
@@ -132,16 +148,13 @@ function createPageWaypoints() {
 
 
 
-
-
-
-
 //*****************************************************************
 //   LISTENERS
 //*****************************************************************
 
 
-$(".postal-search-bar button").click(function() {
+
+$(document).on("click", ".postal-search-bar button", function() {
 
   var string = $(".postal-search-bar input").val();
   if (Boolean(string)) {
@@ -151,9 +164,10 @@ $(".postal-search-bar button").click(function() {
             coord2FED([results[0].geometry.location.lng(), results[0].geometry.location.lat()]);
         }
     });
-
   }
 });
+
+
 
 $(document).on("click", ".FED-titlebar-flex", function() {
     var fedID = $(this).children(".FED-name").attr("id");
@@ -166,12 +180,33 @@ $(document).on("click", ".FED-titlebar-flex", function() {
 
 
 
+$(document).on("click", ".top-bar-right > .menu-icon", function() {
+    console.log($(this).next())
+    $(this).next().slideToggle(200);
+});
+
+
+
+$(document).on("click", function (e) {
+        if ($(e.target).is("#mobile-drop-menu") === false & $(e.target).is(".top-bar-right > .menu-icon") === false) {
+            $("#mobile-drop-menu").slideUp(200);
+        }
+    });
+
+
+
+
+
+
+
 
 
 
 //*******************************************************************************************
 //   CONVENIENCE FUNCTIONS
 //*******************************************************************************************
+
+
 
 function getRandomColor(color, variance) {
     var blue = ["00","85","AE"];
@@ -226,9 +261,11 @@ function getRandomColor(color, variance) {
 }
 
 
+
 function getMaxOfArray(numArray) {
   return Math.max.apply(null, numArray);
 }
+
 
 
 function queryStringObject() {
@@ -261,6 +298,7 @@ function queryStringObject() {
 }
 
 
+
 function provinceNameExpand(abbrev) {
     var dict = {"BC": "British Columbia",
                 "AB": "Alberta",
@@ -280,9 +318,38 @@ function provinceNameExpand(abbrev) {
 
 
 
+function compareCompetitivenessDescending(a, b) {
+        return b.competitiveness - a.competitiveness;
+}
+
+
+
+function compareCompetitivenessAscending(a, b) {
+        return a.competitiveness - b.competitiveness;
+}
+
+
+
+function compareTurnoutDescending(a, b) {
+        return b.turnout - a.turnout;
+}
+
+
+
+function compareTurnoutAscending(a, b) {
+        return a.turnout - b.turnout;
+}
+
+
+
+
+
+
+
 //*******************************************************************************************
 //   OTHER FUNCTIONS
 //*******************************************************************************************
+
 
 
 function provinceClick(evt) {
@@ -294,10 +361,10 @@ function provinceClick(evt) {
 };
 
 
+
 function callBadAddressPopup() {
     $('#bad-address-popup').foundation('open');
 }
-
 
 
 
@@ -332,7 +399,6 @@ function initMapBoxMap(mapdata) {
                         onEachFeature: onEachFeature}).addTo(provinceMap);
     provinceMap.fitBounds(mapbounds);
 
-
     mapInfo = L.control();
     mapInfo.onAdd = function (map) {
         this._div = L.DomUtil.create('div', 'map-info'); // create a div with a class "info"
@@ -341,14 +407,10 @@ function initMapBoxMap(mapdata) {
     };
     // method that we will use to update the control based on feature properties passed
     mapInfo.update = function (props) {
-        this._div.innerHTML = (props ? props.FEDNAME : 'Hover over a province');
+        this._div.innerHTML = (props ? props.FEDNAME : 'Hover over a district');
     };
     mapInfo.addTo(provinceMap);
 }
-
-
-
-
 
 
 
@@ -360,20 +422,14 @@ function loadXML() {
             populateFEDList(electionsXML);
             if(window.location.href.indexOf("provinces") > -1) {
                 populateProvincePageData(electionsXML);
+                var rank = fedRankingFunction(electionsXML, "turnout");
+                console.log(rank(48022))
             }
     	}
   	};
   	xhttp.open("GET", siteroot + "/data/FED2015.xml", true);
   	xhttp.send();
 } 
-
-
-
-
-
-
-
-
 
 
 
@@ -405,9 +461,9 @@ function coord2FED (point) {
 }
 
 
+
 function createFEDListItem(fedid, fedelement) {
     var winningcandidate = getFEDWinner(fedid, fedelement);
-
 
     var fedsnapshotflex = d3.select("#list-of-FEDs").append("div").classed("FED-snapshot-flex", true);
     var fedtitlebarflex = fedsnapshotflex.append("div").classed("FED-titlebar-flex", true);
@@ -420,14 +476,12 @@ function createFEDListItem(fedid, fedelement) {
     var fedresultsflex = fedbodyflex.append("div").classed("FED-results-flex", true);
     var fedstatsflex = fedbodyflex.append("div").classed("FED-stats-flex", true);
 
-
     var fedmp = createFEDDetailsRow("mp", "MP", winningcandidate.getElementsByTagName("CandidateName")[0].childNodes[0].nodeValue);
     var fedpopulation = createFEDDetailsRow("population", "Population", fedelement.getElementsByTagName("Population")[0].childNodes[0].nodeValue);
     var fedelectors = createFEDDetailsRow("electors", "Electors", fedelement.getElementsByTagName("Electors")[0].childNodes[0].nodeValue);
     feddetailsflex.append(function() {return fedmp});
     feddetailsflex.append(function() {return fedpopulation});
     feddetailsflex.append(function() {return fedelectors});
-
 
     var raceresultdata = getRaceResultData(fedelement);
     var candidateinfo = fedresultsflex.append("div").classed("candidate-info", true);
@@ -442,12 +496,9 @@ function createFEDListItem(fedid, fedelement) {
     candidateinfo.append(function() {return candidateoccupation});
     candidateinfo.append(function() {return candidatevotes});
     
-
-
     var fedturnout = fedstatsflex.append("div").classed("FED-turnout", true);
     var fedturnoutpercentage = fedturnout.append("p").classed("FED-stats-percentage", true).html(fedelement.getElementsByTagName("Turnout")[0].childNodes[0].nodeValue + " %");
     var fedturnoutlabel = fedturnout.append("p").classed("FED-stats-label", true).html("TURNOUT");
-
 
     var fedcompetition = fedstatsflex.append("div").classed("FED-competition", true);
     var fedcompetitionpercentage = fedcompetition.append("p").classed("FED-stats-percentage", true).html(fedelement.getElementsByTagName("Competitiveness")[0].childNodes[0].nodeValue.slice(0,4));
@@ -455,6 +506,8 @@ function createFEDListItem(fedid, fedelement) {
 
     createBarChart(raceresultsvg, raceresultdata);
 }
+
+
 
 function getRaceResultData(fedelement) {
     var candidates = fedelement.getElementsByTagName("Candidate");
@@ -467,6 +520,7 @@ function getRaceResultData(fedelement) {
     }
     return data;
 }
+
 
 
 function populateFEDList(electionsXML) {
@@ -482,9 +536,14 @@ function populateFEDList(electionsXML) {
 }
 
 
+
 function populateProvincePageData(electionsXML) {
-    console.log("populating");
+    var provinceheader = d3.select(".main.wrap").append("div").classed("province-header", true);
+    var provincebody = d3.select(".main.wrap").append("div").classed("province-body", true);
+    var mapcontainer = d3.select(".main.wrap").append("div").classed("province-header", true);
+    var provincequickdata = d3.select(".main.wrap").append("div").classed("province-header", true);
 }
+
 
 
 function getFEDWinner(fedid, fedelement) {
@@ -495,6 +554,8 @@ function getFEDWinner(fedid, fedelement) {
         }
     }
 }
+
+
 
 function createFEDDetailsRow(id, label, data) {
     var datarow = document.createElement("div");
@@ -515,8 +576,6 @@ function createFEDDetailsRow(id, label, data) {
 
     return datarow;
 }
-
-
 
 
 
@@ -547,9 +606,6 @@ function createBarChart(svg, data) {
 
 
 
-
-
-
 function updateCandidateInfo(d) {
     var candinfo = d3.select(d3.event.target.parentNode.parentNode.parentNode).select(".candidate-info");
     candinfo.select("#cand-name-data").html(d.name);
@@ -560,9 +616,60 @@ function updateCandidateInfo(d) {
 
 
 
+//BASED ON type RETURN FUNCTION THAT RANKS FED BASED ON id INPUT
+//EXAMPLE OF CLOSURE
+function fedRankingFunction(electionsXML, type) {
+    var fedelement = electionsXML.getElementsByTagName("FED");
+    var data = [];
+    for (var i = fedelement.length - 1; i >= 0; i--) {
+            data.push({id: parseInt(fedelement[i].getAttribute("id")),
+                       competitiveness: parseFloat(fedelement[i].getElementsByTagName("Competitiveness")[0].childNodes[0].nodeValue), 
+                       turnout: parseFloat(fedelement[i].getElementsByTagName("Turnout")[0].childNodes[0].nodeValue)})
+        }
+
+    if (type === "comp") {
+        var compsorted = data.sort(compareCompetitivenessDescending);
+        compsorted.forEach(function(el, index, array) {
+            array[index].rank = index
+        });
+        return function(id) {
+            for (var i = compsorted.length - 1; i >= 0; i--) {
+                if (compsorted[i].id === id) {
+                    return compsorted[i].rank;
+                }
+            }
+        };
+
+    } else if (type === "turnout") {
+        var turnoutsorted = data.sort(compareTurnoutDescending);
+        turnoutsorted.forEach(function(el, index, array) {
+            array[index].rank = index
+        });
+        return function(id) {
+            for (var i = turnoutsorted.length - 1; i >= 0; i--) {
+                if (turnoutsorted[i].id === id) {
+                    return turnoutsorted[i].rank;
+                }
+            }
+        };
+
+    } else {
+        return null;
+    }
+}
+
+
+
+
+
+
+
+
+
 //*******************************************************************************************
 //   FUNCTIONS AND OPTIONS FOR LEAFLET MAP
 //*******************************************************************************************
+
 
 
 function mapStyle(feature) {
@@ -575,6 +682,7 @@ function mapStyle(feature) {
         fillOpacity: 0.5
     }
 }
+
 
 
 function mapFeatureMousover(e) {
@@ -594,10 +702,13 @@ function mapFeatureMousover(e) {
 }
 
 
+
 function mapFeatureMouseout(e) {
     mapGeoJson.resetStyle(e.target);
     mapInfo.update();
 }
+
+
 
 function mapFeatureClick(e) {
     if (e.target === zoomedToFeature.feature) {
@@ -613,6 +724,7 @@ function mapFeatureClick(e) {
         provinceMap.fitBounds(e.target.getBounds());
     }
 }
+
 
 
 function onEachFeature(feature, layer) {

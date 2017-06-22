@@ -54,6 +54,14 @@ DESKTOP - NAV
 	width: auto;
 }
 
+#mobile-drop-menu {
+	max-width: 400px;
+	background-color: rgba(0,0,0,.7);
+	display: none;
+	position: absolute;
+	right: 0;
+	border-radius: 0px 0px 6px 6px;
+}
 
 
 #top-tag {
@@ -514,19 +522,7 @@ MAIN
 
 
 
-#province-svg {
-	margin: 10px;
-}
 
-
-svg .histo-bar:hover {
-	fill-opacity: .8;
-	cursor: pointer;
-}
-
-svg .histo-bar:active{
-	fill-opacity: .5;
-}
 
 
 #province-map {
@@ -635,7 +631,6 @@ MEDIA QUERIES
 		font-variant: small-caps;
 		font-weight: bold;
 		text-align: center;
-		text-decoration: underline;
 	}
 
 	footer a {
@@ -657,13 +652,17 @@ MEDIA QUERIES
 		font-size: 1em;
 	}
 
+	#mobile-drop-menu > li > a {
+		width: 100%;
+	}
+
 	#top-tag {
 		height: 55px!important;
 	    background-color: #282828!important;
 	    border-radius: 0!important;
 	    box-shadow: none!important;
 	    border: none!important;
-	    background-image: linear-gradient(#282828, #282828, #181818)!important;
+	    background-image: linear-gradient(#383838, #181818)!important;
 	}
 
 	.top-tag-text {
@@ -727,14 +726,17 @@ D3 BAR CHARTS
 
 
 
-
-
-.bar rect {
-  fill: steelblue;
+#province-svg {
+	margin: 10px;
 }
 
-.bar text {
-  fill: #fff;
-  font: 10px sans-serif;
+
+svg .histo-bar:hover {
+	fill: #73542f;
+/*	fill-opacity: .8;*/
+	cursor: pointer;
 }
 
+svg .histo-bar:active{
+	fill-opacity: .8;
+}
